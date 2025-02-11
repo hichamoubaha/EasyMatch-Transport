@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyMatch Transport - Espace Expéditeur</title>
+    <style>
+        :root {
+            --primary-color: #FF7F00;
+            --secondary-color: #0080FF;
+            --background-color: #F0F0F0;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+        }
+
+        form {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 1rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.25rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkorange;
+        }
+
+        .colis {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .colis h3 {
+            color: var(--secondary-color);
+        }
+
+        .taille {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .petit { background-color: #90EE90; }
+        .moyen { background-color: #FFD700; }
+        .grand { background-color: #FF6347; }
+
+        .fragile {
+            color: red;
+            font-weight: bold;
+        }
+
+        .itineraire {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: #E6E6FA;
+            border-radius: 4px;
+        }
+
+        .etape {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .etape:not(:last-child)::after {
+            content: "→";
+            margin-left: 0.5rem;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EasyMatch Transport</h1>
+        <p>Espace Expéditeur</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Poster une offre de colis</h2>
+            <form id="offreForm">
+                <label for="depart">Ville de départ :</label>
+                <input type="text" id="depart" required>
+
+                <label for="arrivee">Ville d'arrivée :</label>
+                <input type="text" id="arrivee" required>
+
+                <label for="taille">Taille du colis :</label>
+                <select id="taille" required>
+                    <option value="petit">Petit</option>
+                    <option value="moyen">Moyen</option>
+                    <option value="grand">Grand</option>
+                </select>
+
+                <label for="fragile">Colis fragile :</label>
+                <select id="fragile" required>
+                    <option value="non">Non</option>
+                    <option value="oui">Oui</option>
+                </select>
+
+                <label for="description">Description :</label>
+                <textarea id="description" rows="3"></textarea>
+
+                <label for="etapes">Étapes intermédiaires (séparées par des virgules) :</label>
+                <input type="text" id="etapes" placeholder="Ex: Essaouira, Rabat, Fès">
+
+                <button type="submit">Poster l'offre</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Offres de colis acceptées</h2>
+            <div id="offresAcceptees"></div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('offreForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const depart = document.getElementById('depart').value;
+            const arrivee = document.getElementById('arrivee').value;
+            const taille = document.getElementById('taille').value;
+            const fragile = document.getElementById('fragile').value;
+            const description = document.getElementById('description').value;
+            const etapes = document.getElementById('etapes').value.split(',').map(etape => etape.trim());
+
+            const offre = {
+                depart,
+                arrivee,
+                taille,
+                fragile,
+                description,
+                etapes
+            };
+
+            ajouterOffre(offre);
+            this.reset();
+        });
+
+        function ajouterOffre(offre) {
+            const offresAcceptees = document.getElementById('offresAcceptees');
+            const colisElement = document.createElement('div');
+            colisElement.className = 'colis';
+
+            const tailleClass = offre.taille === 'petit' ? 'petit' : offre.taille === 'moyen' ? 'moyen' : 'grand';
+
+            colisElement.innerHTML = `
+                <h3>${offre.depart} → ${offre.arrivee}</h3>
+                <p><span class="taille ${tailleClass}">${offre.taille.charAt(0).toUpperCase() + offre.taille.slice(1)}</span>
+                ${offre.fragile === 'oui' ? '<span class="fragile">Fragile</span>' : ''}</p>
+                <p>${offre.description}</p>
+                <div class="itineraire">
+                    <strong>Itinéraire :</strong>
+                    <span class="etape">${offre.depart}</span>
+                    ${offre.etapes.map(etape => `<span class="etape">${etape}</span>`).join('')}
+                    <span class="etape">${offre.arrivee}</span>
+                </div>
+            `;
+
+            offresAcceptees.prepend(colisElement);
+        }
+    </script>
+</body>
+</html>
+
