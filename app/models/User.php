@@ -81,6 +81,8 @@ class User
         $this->motdepass = $motdepass;
     }
 
+
+
     public function validate($data){
 
         if(isset($data['firstname']) && isset($data['lastname'])){

@@ -6,8 +6,8 @@ use App\Models\User;
 class HomeController extends Controller
 {
     public function index(){
-
-        return $this->view('home\home');
+        
+        return $this->view('home');
     }
     
 }
