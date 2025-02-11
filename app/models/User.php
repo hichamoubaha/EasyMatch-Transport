@@ -4,7 +4,6 @@ namespace App\Models;
 use PDO;
 use App\core\Database;
 use App\core\Model;
-use IModelRepositorie;
 
 class User
 {
