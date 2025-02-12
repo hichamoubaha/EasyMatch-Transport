@@ -1,4 +1,4 @@
-CREATE DATABASE easymatch_transport;
+CREATE DATABASE koulia;
 
 \c easymatch_transport;
 
