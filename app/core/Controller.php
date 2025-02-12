@@ -1,4 +1,5 @@
 <?php
+namespace App\Core;
 namespace App\core;
 
 

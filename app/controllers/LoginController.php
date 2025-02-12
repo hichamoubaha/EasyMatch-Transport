@@ -1,4 +1,6 @@
 <?php
+
+use App\core\Controller;
 use App\Models\User;
 
 class LoginController extends Controller

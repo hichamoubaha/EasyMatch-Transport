@@ -49,7 +49,7 @@ require __DIR__."/components/header.php";
                             <div class="d-flex justify-content-start">
                                 
                                 <div class="userData ml-3">
-                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">Some Name</a></h2>
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">nom d'utilisateur</a></h2>
                     
                                 </div>
                                 <div class="ml-auto">
@@ -83,7 +83,7 @@ require __DIR__."/components/header.php";
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">date naissance</label>
+                                                <label style="font-weight:bold;">date de naissance</label>
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 March 22, 1994.
@@ -116,7 +116,7 @@ require __DIR__."/components/header.php";
                                  
                                 </div>
 
-                                <button class="btn btn-primary w-100 py-3" type="button">update profile</button>
+                                <button class="btn btn-primary w-100 py-3" type="button">modifier profile</button>
                             </div>
                         </div>
 
@@ -130,9 +130,61 @@ require __DIR__."/components/header.php";
 </section>
 </section>
 
-
-
-
+<div class="col-md-6 contact-form wow fadeIn bg-light p-4 shadow-sm" style="top:100px;left:100px;z-index:50;" data-wow-delay="0.1s">
+    <h4 class="mb-4">modifer vos informations</h4>
+    <div class="">
+        <form>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                        <label for="name">Nom</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                        <label for="name">Prenom</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="telephone" placeholder="telephone">
+                        <label for="telephone">Telephone</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="date-naissance" placeholder="date-naissance">
+                        <label for="date-naissance">Date Naissance</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="pay" placeholder="pay">
+                        <label for="pay">Date Naissance</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="ville" placeholder="ville">
+                        <label for="ville">Date Naissance</label>
+                    </div>
+                </div>
+                                
+                <div class="col-12">
+                    <button class="btn btn-primary w-100 py-3" type="button">Enregistrer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <?php
 require __DIR__."/components/footer.php";

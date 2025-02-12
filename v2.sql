@@ -1,6 +1,6 @@
-CREATE DATABASE easymatch_transport;
+CREATE DATABASE koulia;
 
-\c easymatch_transport;
+\c koulia;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -17,18 +17,6 @@ CREATE TABLE users (
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')),
     date_bloque DATE
 );
-
--- CREATE TABLE admin (
---     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE  
--- );
-
--- CREATE TABLE expediteur (
---     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
--- );
-
--- CREATE TABLE conducteur (
---     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
--- );
 
 CREATE TABLE verify_badge (
     id SERIAL PRIMARY KEY,
@@ -61,17 +49,21 @@ CREATE TABLE trajet (
     date_limite_offre DATE,
     trajet_itineraire TEXT,
     type_vehicule VARCHAR(100),
+    description TEXT,
     fragile_admit VARCHAR CHECK (fragile_admit in ('oui', 'non')),        
     matricule_vehicule VARCHAR(100),
     size_colis VARCHAR(50),
-    package_car TEXT
+    package_car TEXT,
+    note TEXT
 );
 
 CREATE TABLE demande_expediteur (
     id SERIAL PRIMARY KEY,
     expediteur_id INT REFERENCES users(id) ON DELETE CASCADE,
     fragile VARCHAR CHECK (fragile in ('oui', 'non')) DEFAULT 'non',
-    date_reservation DATE
+    date_reservation DATE,
+    note TEXT
+
 );
 
 CREATE TABLE fragile_colier_reservé (
@@ -80,3 +72,4 @@ CREATE TABLE fragile_colier_reservé (
     size_colier TEXT,
     nbr_colier_fragile INT
 );
+
