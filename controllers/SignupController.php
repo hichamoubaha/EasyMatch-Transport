@@ -1,9 +1,28 @@
 <?php
 use App\Models\User;
 
-class SignupController extends Controller
+class SignupController
 {
 
+    private function view($name, $data = []){
+        
+        if(!empty($data))
+            extract($data);
+
+        $filename = '../app/views/'. $name .'.view.php';
+
+        if(file_exists($filename)){
+            require_once $filename;
+        }
+        else{
+
+            $filename = '../app/views/404.view.php';
+            require_once $filename;
+        
+        }
+    }
+
+    
     public function index()
     {
         $data = [];
@@ -15,8 +34,8 @@ class SignupController extends Controller
 
             if($user->validate($_POST)){
 
-                $user->insert($_POST);
-                redirect('login');
+                $user->insertUser($_POST);
+                require '../views/Authentication/login.view.php';
             }
 
             $errors = $user->errors;

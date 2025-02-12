@@ -8,8 +8,6 @@
 </head>
 <body>
 
-    <!-- source: https://gist.github.com/nraloux/bce10c4148380061781b928cdab9b193 -->
-<!-- I have added support for dark mode and improved UI -->
 
 <div class="h-full bg-gray-400 dark:bg-gray-900">
 	<!-- Container -->
@@ -85,6 +83,7 @@
                                 id="date_naissance"
                                 type="date"
                                 placeholder="date de naissance"
+                                name="date-naissance"
                             />
 
                             <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="role">

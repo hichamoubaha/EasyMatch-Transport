@@ -8,8 +8,6 @@
 </head>
 <body>
 
-    <!-- source: https://gist.github.com/nraloux/bce10c4148380061781b928cdab9b193 -->
-<!-- I have added support for dark mode and improved UI -->
 
 <div class="h-full bg-gray-400 dark:bg-gray-900">
 	<!-- Container -->
