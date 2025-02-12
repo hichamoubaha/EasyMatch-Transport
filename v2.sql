@@ -1,7 +1,7 @@
 CREATE DATABASE koulia;
 
 \c koulia;
-
+   
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(100),
