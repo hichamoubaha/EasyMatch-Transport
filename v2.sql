@@ -18,18 +18,6 @@ CREATE TABLE users (
     date_bloque DATE
 );
 
--- CREATE TABLE admin (
---     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE  
--- );
-
--- CREATE TABLE expediteur (
---     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
--- );
-
--- CREATE TABLE conducteur (
---     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
--- );
-
 CREATE TABLE verify_badge (
     id SERIAL PRIMARY KEY,
     conducteur INT REFERENCES users(id) ON DELETE CASCADE,
