@@ -32,7 +32,7 @@ CREATE TABLE users (
 
 CREATE TABLE verify_badge (
     id SERIAL PRIMARY KEY,
-    admin_id INT REFERENCES admin(user_id) ON DELETE CASCADE,
+    admin_id INT REFERENCES users(id) ON DELETE CASCADE,
     badge_verifier VARCHAR(255),
     nombre_etoile INT
 );
