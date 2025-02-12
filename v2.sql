@@ -15,7 +15,8 @@ CREATE TABLE users (
     pays VARCHAR(100),
     ville VARCHAR(100),
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')),
-    date_bloque DATE
+    date_bloque DATE,
+    sex VARCHAR CHECK (post in ('M', 'F))
 );
 
 CREATE TABLE verify_badge (
@@ -73,3 +74,8 @@ CREATE TABLE fragile_colier_reservé (
     nbr_colier_fragile INT
 );
 
+<<<<<<< HEAD
+=======
+ALTER TABLE users
+ADD COLUMN sexe VARCHAR(1) CHECK (sexe IN ('M', 'F'));
+>>>>>>> oumayma
