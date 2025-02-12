@@ -17,6 +17,7 @@ CREATE TABLE users (
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')),
     date_bloque DATE,
     sex VARCHAR CHECK (post in ('M', 'F))
+    -----
 );
 
 -- CREATE TABLE admin (
@@ -66,8 +67,10 @@ CREATE TABLE trajet (
     matricule_vehicule VARCHAR(100),
     size_colis VARCHAR(50),
     package_car TEXT,
-    note TEXT
+    note TEXT,
+    description TEXT 
 );
+-------
 
 CREATE TABLE demande_expediteur (
     id SERIAL PRIMARY KEY,
