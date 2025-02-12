@@ -7,5 +7,11 @@ class Driver extends User{
 
     use Model;
     private $matricule;
+
+
+
+    public function publishOffer(){
+        
+    }
     
 }
