@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/../core/Controller.php';
+use App\Core\Controller;
 use App\core\Model;
 use App\Models\User;
 
@@ -9,5 +9,7 @@ class HomeController extends Controller
         
         return $this->view('home');
     }
+
+    
     
 }
