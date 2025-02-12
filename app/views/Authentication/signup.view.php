@@ -124,7 +124,7 @@
 						</div>
 						<div class="mb-6 text-center">
 							<button
-                                class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 dark:bg-blue-700 dark:text-white dark:hover:bg-blue-900 focus:outline-none focus:shadow-outline"
+                                class="w-full px-4 py-2 font-bold text-white bg-red-400 rounded-full hover:bg-red-200 dark:bg-red-400 dark:text-white dark:hover:bg-red-200 focus:outline-none focus:shadow-outline"
                                 type="button"
                             >
                             Inscrivez-vous

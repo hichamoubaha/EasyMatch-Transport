@@ -72,3 +72,4 @@ CREATE TABLE fragile_colier_reservé (
     size_colier TEXT,
     nbr_colier_fragile INT
 );
+
