@@ -22,7 +22,7 @@ class SignupController
         }
     }
 
-    
+
     public function index()
     {
         $data = [];
@@ -35,7 +35,7 @@ class SignupController
             if($user->validate($_POST)){
 
                 $user->insertUser($_POST);
-                require '../views/Authentication/login.view.php';
+                return $this->view('Authentication/login');
             }
 
             $errors = $user->errors;
@@ -43,7 +43,7 @@ class SignupController
 
         }
 
-        return $this->view('signup',$data);
+        return $this->view('Authentication/signup',$data);
         
     }
 }
