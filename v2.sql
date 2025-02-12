@@ -64,14 +64,17 @@ CREATE TABLE trajet (
     fragile_admit VARCHAR CHECK (fragile_admit in ('oui', 'non')),        
     matricule_vehicule VARCHAR(100),
     size_colis VARCHAR(50),
-    package_car TEXT
+    package_car TEXT,
+    note TEXT
 );
 
 CREATE TABLE demande_expediteur (
     id SERIAL PRIMARY KEY,
     expediteur_id INT REFERENCES users(id) ON DELETE CASCADE,
     fragile VARCHAR CHECK (fragile in ('oui', 'non')) DEFAULT 'non',
-    date_reservation DATE
+    date_reservation DATE,
+    note TEXT
+
 );
 
 CREATE TABLE fragile_colier_reservé (
