@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__.'/../core/Controller.php';
+
+use App\core\Controller;
 use App\core\Model;
 use App\Models\User;
 

@@ -10,7 +10,7 @@ class Driver extends User{
 
 
 
-    public function publishOffer(){
+    public function updateInfo(){
         
     }
     
