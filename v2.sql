@@ -61,6 +61,7 @@ CREATE TABLE trajet (
     date_limite_offre DATE,
     trajet_itineraire TEXT,
     type_vehicule VARCHAR(100),
+    description TEXT,
     fragile_admit VARCHAR CHECK (fragile_admit in ('oui', 'non')),        
     matricule_vehicule VARCHAR(100),
     size_colis VARCHAR(50),
