@@ -1,6 +1,6 @@
 CREATE DATABASE koulia;
 
-\c easymatch_transport;
+\c koulia;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
