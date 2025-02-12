@@ -6,7 +6,7 @@ use PDO;
 use PDOException;
 
 trait Database
-{
+{ 
     private $connection;
 
     public function getConnection(){
