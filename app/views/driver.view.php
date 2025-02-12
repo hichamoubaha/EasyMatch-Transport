@@ -72,7 +72,7 @@ require __DIR__."/components/header.php";
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Full Name</label>
+                                                <label style="font-weight:bold;">nom complet</label>
                                             </div>
                                            
                                             <div class="col-md-8 col-6">
@@ -83,7 +83,7 @@ require __DIR__."/components/header.php";
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Birth Date</label>
+                                                <label style="font-weight:bold;">date naissance</label>
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 March 22, 1994.
@@ -94,37 +94,29 @@ require __DIR__."/components/header.php";
                                         
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
+                                                <label style="font-weight:bold;">adress</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Something
+                                            casablanca Rue hassan 2 ,residece andra
                                             </div>
                                         </div>
                                         <hr />
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
+                                                <label style="font-weight:bold;">matricule de voiture</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Something
+                                                A 122546
                                             </div>
                                         </div>
-                                        <hr />
-                                        <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Something</label>
-                                            </div>
-                                            <div class="col-md-8 col-6">
-                                                Something
-                                            </div>
-                                        </div>
+                                
                                         <hr />
 
                                     </div>
-                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
-                                        Facebook, Google, Twitter Account that are connected to this account
-                                    </div>
+                                 
                                 </div>
+
+                                <button class="btn btn-primary w-100 py-3" type="button">update profile</button>
                             </div>
                         </div>
 
