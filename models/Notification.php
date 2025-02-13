@@ -29,7 +29,7 @@ class Notification {
         $this->date = $date;
     }
 
-    // Function to send notification to a user
+    // Function to send notification to a user 
 
     public function sendNotification($recepteur) {
         try {
@@ -44,7 +44,7 @@ class Notification {
         }
     }
 
-    // Function to get user notifications by id
+    // Function to get user notifications by id 
 
     public function getUserNotifications($userId) {
         try {
