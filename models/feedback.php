@@ -33,12 +33,14 @@ class Avis {
     }
 
     // Function to send feedback to a user
-    public function sendFeedback($sender, $receiver) {
+    public function sendFeedback($sender, $receiver, $trajet) {
         try {
-            $sql = "INSERT INTO avis (expediteur, destinataire, message, note) VALUES (:sender, :receiver, :message, :note)";
+            $sql = "INSERT INTO avis (expediteur, destinataire, trajet, message, note) 
+            VALUES (:sender, :receiver, :trajet, :message, :note)";
             $query = $this->db->prepare($sql);
             $query->bindParam(':sender', $sender, PDO::PARAM_INT);
             $query->bindParam(':receiver', $receiver, PDO::PARAM_INT);
+            $query->bindParam(':trajet', $trajet, PDO::PARAM_INT);
             $query->bindParam(':message', $this->message, PDO::PARAM_STR);
             $query->bindParam(':note', $this->note, PDO::PARAM_INT);
             $query->execute();

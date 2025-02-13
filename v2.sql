@@ -35,6 +35,7 @@ CREATE TABLE notification (
 
 CREATE TABLE avis (
     id SERIAL PRIMARY KEY,
+    traget INT REFERENCES trajet(id) ON DELETE CASCADE, 
     expediteur INT REFERENCES utilisateurs(id) ON DELETE CASCADE, 
     destinataire INT REFERENCES utilisateurs(id) ON DELETE CASCADE, 
     message TEXT,
