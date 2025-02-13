@@ -1,13 +1,7 @@
 <?php
-namespace App\Models;
-
-use PDO;
-use App\core\Database;
 
 class User
 {
-
-    use Database;
 
     private $id_user;
     private $nom;
@@ -19,6 +13,8 @@ class User
     private $role;
     public $errors = [];
 
+    private $pdo;
+    
     public function __contruct($id_user,$nom,$prenom,$email,$telephone,$date_naissance,$role,$motdepass)
     {
 
@@ -30,14 +26,13 @@ class User
         $this->date_naissance = $date_naissance;
         $this->role = $role;
         $this->motdepass = $motdepass;
+        
+        $this->pdo = new Database;
     }
 
     //getters and setters
     public function getIdUser($id_user){
         return $this->id_user = $id_user;
-    }
-    public function setIdUser($id_user){
-        $this->id_user = $id_user;
     }
 
     public function getNom()
@@ -101,6 +96,23 @@ class User
         $this->motdepass = $motdepass;
     }
 
+
+    private function query($query,$data = []){
+        
+        $stmt = $this->pdo->getConnection()->prepare($query);
+        $check = $stmt->execute($data);
+
+        if($check){
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            if(is_array($result) && count($result)){
+                return $result;
+            }
+
+        }
+        else return false;
+
+    }
 
 
     public function validate($data){

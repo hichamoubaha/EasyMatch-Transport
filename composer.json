@@ -1,5 +1,9 @@
 {
-    "require": {
-        "phpmailer/phpmailer": "^6.9"
-    }
+    "name": "ycode/easy-match-transport",
+    "autoload": {
+        "psr-4": {
+            "Ycode\\EasyMatchTransport\\": "src/"
+        }
+    },
+    "require": {}
 }

@@ -1,12 +1,7 @@
 <?php
-require __DIR__."/../models/User.php";
 
-class LoginController extends Controller
+class AuhtController extends Controller
 {
-
-    public function index(){
-        require __DIR__.'/../views/Authentication/login.view.php';
-    }
 
     public function login()
     {
@@ -50,5 +45,4 @@ class LoginController extends Controller
         return $this->view('Authentication/login',$data);
         
     }
-
 }
