@@ -6,7 +6,7 @@ use App\Config\Database;
 
 
 
-class trajet {
+class Trajet {
 
 private $driver_id;
 

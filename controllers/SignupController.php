@@ -1,4 +1,6 @@
 <?php
+
+use App\core\Controller;
 use App\Models\User;
 
 class SignupController extends Controller
@@ -15,8 +17,8 @@ class SignupController extends Controller
 
             if($user->validate($_POST)){
 
-                $user->insert($_POST);
-                redirect('login');
+                $user->insertUser($_POST);
+                return $this->view('Authentication/login');
             }
 
             $errors = $user->errors;
@@ -24,7 +26,7 @@ class SignupController extends Controller
 
         }
 
-        return $this->view('signup',$data);
+        return $this->view('Authentication/signup',$data);
         
     }
 }
