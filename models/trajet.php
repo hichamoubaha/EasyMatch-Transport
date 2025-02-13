@@ -24,8 +24,10 @@ private $capasitedevehicule;
 
 private $etapesintermédiaires;
 
+private $matriculeVehicule;
 
-public function __construct($driver_id, $point_depart, $point_arrivee, $date_depart, $date_darrivee, $typedevehicule, $capasitedevehicule, $etapesintermédiaires) {
+
+public function __construct($driver_id, $point_depart, $point_arrivee, $date_depart, $date_darrivee, $typedevehicule, $capasitedevehicule, $etapesintermédiaires ,$matriculeVehicule) {
 $this->driver_id = $driver_id;
 $this->point_depart = $point_depart;
 $this->point_arrivee = $point_arrivee;
@@ -34,6 +36,7 @@ $this->date_darrivee = $date_darrivee;
 $this->typedevehicule = $typedevehicule;
 $this->capasitedevehicule = $capasitedevehicule;
 $this->etapesintermédiaires = $etapesintermédiaires;
+$this->matriculeVehicule = $matriculeVehicule;
 }
 
 public function getDriver_id() {
@@ -88,6 +91,14 @@ $this->capasitedevehicule = $capasitedevehicule;
 }
 public function setEtapesintermédiaires($etapesintermédiaires) {
 $this->etapesintermédiaires = $etapesintermédiaires;
+}
+
+public function getMatriculeVehicule() {
+return $this->matriculeVehicule;
+}
+
+public function setMatriculeVehicule($matriculeVehicule) {
+$this->matriculeVehicule = $matriculeVehicule;
 }
 
 
