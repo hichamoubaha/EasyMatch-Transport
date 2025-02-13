@@ -106,7 +106,7 @@ public function AddTrajet($driver_id, $point_depart, $point_arrivee, $date_depar
 
 $database = new Database();
 $conn = $database->getConnection();
-$sql = "INSERT INTO trajet (driver_id, point_depart, point_arrivee, date_depart, date_darrivee, typedevehicule, capasitedevehicule, etapesintermédiaires) VALUES (:driver_id, :point_depart, :point_arrivee, :date_depart, :date_darrivee, :typedevehicule, :capasitedevehicule, :etapesintermédiaires)";
+$sql = "INSERT INTO trajet (driver_id, point_depart, point_arrivee, date_depart, date_darrivee, typedevehicule, capasitedevehicule, etapesintermédiaires , matricule_vehicule) VALUES (:driver_id, :point_depart, :point_arrivee, :date_depart, :date_darrivee, :typedevehicule, :capasitedevehicule, :etapesintermédiaires , :matriculeVehicule)";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':driver_id', $driver_id);
 $stmt->bindParam(':point_depart', $point_depart);
@@ -116,6 +116,7 @@ $stmt->bindParam(':date_darrivee', $date_darrivee);
 $stmt->bindParam(':typedevehicule', $typedevehicule);
 $stmt->bindParam(':capasitedevehicule', $capasitedevehicule);
 $stmt->bindParam(':etapesintermédiaires', $etapesintermédiaires);
+$stmt->bindParam(':matriculeVehicule', $matriculeVehicule);
 $stmt->execute();
 }
 

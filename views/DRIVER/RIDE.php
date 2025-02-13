@@ -167,7 +167,7 @@
 
             <div class="d-flex justify-content-between mt-4">
                 <button class="btn btn-secondary" onclick="prevStep()">← Précédent</button>
-                <button type="submit" class="btn btn-success"> Publier le trajet</button>
+                <button type="submit" class="btn btn-success"> Publier la  annonce</button>
             </div>
         </div>
     </form>

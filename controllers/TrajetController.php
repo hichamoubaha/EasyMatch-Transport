@@ -21,9 +21,3 @@ class TrajetController
         echo "Trajet ajouté avec succès";
     }
 }
-
-$gg=new TrajetController();
-$gg->createTraject("qsk" , "hjqds" , "sqjlkd" , "sqjd" , "sqjkd" , "sqjkd" , "sqjkd" , "sqjkd" , "sqjkd");
-
-
-echo "Trajet ajouté avec succès";
