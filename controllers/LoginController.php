@@ -19,12 +19,22 @@ class LoginController extends Controller
 
                 $data['email'] = $_POST['email'];
 
-                $dbuser = $user->first($data);
+                $dbuser = $user->getUser($data);
                 if($dbuser){
                     if ($dbuser->password === $_POST['password']){
 
                         $_SESSION['USER'] = $dbuser;
-                        redirect('home');
+                        
+                        if($dbuser->role === 'expediteur'){
+
+                        }
+                        else if($dbuser->role === 'conducteur'){
+
+                        }
+
+                        else if($dbuser->role === 'admin'){
+
+                        }
         
                     }
                 }

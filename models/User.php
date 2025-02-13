@@ -8,7 +8,7 @@ class User
 {
 
     use Database;
-    
+
     private $id_user;
     private $nom;
     private $prenom;
@@ -105,13 +105,21 @@ class User
 
     public function validate($data){
 
-        if(isset($data['nom']) && isset($data['prenom'])){
+        if(isset($data['nom']) && isset($data['prenom']) && isset($data['role']) && isset($data['date-naissance'])){
             if(empty($data['nom'])){
                 $this->errors['firstname'] = 'First Name est obligatoire !';
             }
     
             if(empty($data['prenom'])){
                 $this->errors['lastname'] = 'Last Name est obligatoire !';
+            }
+
+            if(empty($data['role'])){
+                $this->errors['role'] = 'role est obligatoire';
+            }
+    
+            if(empty($data['date-naissancec'])){
+                $this->errors['date-naissance'] = 'date de naissance est invalid';
             }
         }
 
@@ -125,13 +133,6 @@ class User
             $this->errors['email'] = 'Email est invalid !';
         }
 
-        if(empty($data['role'])){
-            $this->errors['role'] = 'role est obligatoire';
-        }
-
-        if(empty($data['date-naissancec'])){
-            $this->errors['date-naissance'] = 'date de naissance est invalid';
-        }
         if(empty($data['password'])){
             $this->errors['password'] = 'Password is obligatoire !';
         }
@@ -151,6 +152,33 @@ class User
 
         $this->query($query,$data);
 
+    }
+
+    public function getUser($data , $data_not = []){
+
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+
+        $query = "SELECT * FROM public.users WHERE ";
+        foreach($keys as $key){
+
+            $query .= $key ." = :" .$key . " && ";
+        }
+
+        foreach($keys_not as $key){
+
+            $query .= $key ." = :" .$key . " && ";
+        }
+
+        $query = rtrim($query, ' && ');
+
+        $data = array_merge($data , $data_not);
+        $result = $this->query($query ,$data);
+
+        if($result) 
+        return $result[0];
+
+        return false;
     }
 
 }
