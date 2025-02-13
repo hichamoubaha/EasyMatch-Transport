@@ -1,6 +1,5 @@
 <?php
-
-use App\core\Controller;
+require './Controller.php';
 use App\Models\User;
 
 class LoginController extends Controller
@@ -26,14 +25,14 @@ class LoginController extends Controller
                         $_SESSION['USER'] = $dbuser;
                         
                         if($dbuser->role === 'expediteur'){
-
+                            redirect('sender');
                         }
                         else if($dbuser->role === 'conducteur'){
-
+                            redirect('driver');
                         }
 
                         else if($dbuser->role === 'admin'){
-
+                            redirect('dashboard');
                         }
         
                     }

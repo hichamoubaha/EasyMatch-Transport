@@ -1,14 +1,11 @@
 <?php
-namespace App\Core;
-namespace App\core;
-
 
 
 class Controller{
     
 
     public function view($name, $data = []){
-        
+        echo 'hello';
         if(!empty($data))
             extract($data);
 

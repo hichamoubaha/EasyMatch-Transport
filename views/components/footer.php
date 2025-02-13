@@ -66,14 +66,14 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?=ROOT?>libs/wow/wow.min.js"></script>
-    <script src="<?=ROOT?>libs/easing/easing.min.js"></script>
-    <script src="<?=ROOT?>libs/waypoints/waypoints.min.js"></script>
-    <script src="<?=ROOT?>libs/counterup/counterup.min.js"></script>
-    <script src="<?=ROOT?>libs/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../public/libs/wow/wow.min.js"></script>
+    <script src="../public/libs/easing/easing.min.js"></script>
+    <script src="../public/libs/waypoints/waypoints.min.js"></script>
+    <script src="../public/libs/counterup/counterup.min.js"></script>
+    <script src="../public/libs/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="<?=ROOT?>js/main.js"></script>
+    <script src="../public/js/main.js"></script>
 </body>
 
 </html>

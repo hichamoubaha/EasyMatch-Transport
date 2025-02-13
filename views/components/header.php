@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="<?=ROOT?>images/favicon.ico" rel="icon">
+    <link href="../public/images/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +21,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="<?=ROOT?>libs/animate/animate.min.css" rel="stylesheet">
-    <link href="<?=ROOT?>libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../public/libs/animate/animate.min.css" rel="stylesheet">
+    <link href="../public/libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?=ROOT?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?=ROOT?>css/style.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
     
 </head>
 

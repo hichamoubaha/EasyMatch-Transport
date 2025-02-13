@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="<?=ROOT?>images/favicon.ico" rel="icon">
+    <link href="../public/images/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,15 +21,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="<?=ROOT?>libs/animate/animate.min.css" rel="stylesheet">
-    <link href="<?=ROOT?>libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../public/libs/animate/animate.min.css" rel="stylesheet">
+    <link href="../public/libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?=ROOT?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?=ROOT?>css/style.css" rel="stylesheet">
+    <link href="../public/css/style.css" rel="stylesheet">
     
+    <style>
+        .vertical-divider {
+            width: 1px;
+            height: 20px;
+            background-color: #0d6efd; /* Bootstrap primary color */
+        }
+    </style>
 </head>
 
 <body>
@@ -63,79 +70,77 @@
     </nav>
     <!-- Navbar End -->
 
+    <main class="container-fluid p-5">
+        <!-- Dashboard Section -->
+        <section class="row">
+            <!-- Left Panel: User Requests Summary -->
+            <div class="col-md-6">
+                <h4 class="text-md mb-4">Bonjour User</h4>
+                <div class="d-flex gap-2 align-items-center">
+                    <p><span id="total-demandes" class="text-primary">10</span> demandes</p>
+                    <div class="vertical-divider"></div>
+                    <p><span id="encour-demandes" class="text-primary">2</span> demande en cours</p>
+                    <div class="vertical-divider"></div>
+                    <p><span id="accepted-demandes" class="text-primary">2</span> demande acceptées</p>
+                    <div class="vertical-divider"></div>
+                    <p><span id="rejected-demandes" class="text-primary">4</span> demande refusées</p>
+                </div>
 
-<section class="d-flex p-5">
+                <div class="mt-4">
+                    <h4>Vos demandes :</h4>
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Statut</th>
+                                <th>Date</th>
+                                <th>actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example Row -->
+                            <tr>
+                                <td>001</td>
+                                <td>En cours</td>
+                                <td>2023-10-01</td>
+                                <td class="d-flex gap-2">
+                                    <p>
+                                        <a href="" >accepter</a>
+                                    </p>
+                                    <p>
+                                        <a href="">refuser</a>
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-<section class="w-50">
-    <h4 class="text-md mb-4">Bonjour User</h4>
-
-    <div class="d-flex gap-2">
-        <p><span id="total demandes" class="text-primary ">10</span> demandes</p>
-        <div class="bg-primary" style="width:1px;height:20px;"></div>
-        <p><span id="accepted-demandes" class="text-primary ">2</span> demande encour</p>
-        <div class="bg-primary" style="width:1px;height:20px;"></div>
-        <p><span id="accepted-demandes" class="text-primary ">2</span> demande accépter</p>
-        <div class="bg-primary" style="width:1px;height:20px;"></div>
-        <p><span id="accepted-demandes" class="text-primary ">4</span> demande refuser</p>
-    </div>
-    
-
-    <div>
-        <h4>
-            vos demande :
-        </h4>
-        
-        <table>
-            <thead>
-                <th>
-                    
-                </th>
-            </thead>
-
-            <tbody>
-
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<section class="w-50">
-<div class="container w-100">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-
+            <!-- Right Panel: User Profile Information -->
+            <div class="col-md-6">
+                <div class="card shadow-sm">
                     <div class="card-body">
                         <div class="card-title mb-4">
-                            <div class="d-flex justify-content-start">
-                                
-                                <div class="userData ml-3">
-                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">nom d'utilisateur</a></h2>
-                    
-                                </div>
-                                <div class="ml-auto">
-                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
-                                </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2 class="mb-0">Nom d'utilisateur</h2>
+                                <button id="modifier-profile-btn" class="btn btn-primary" style="border-radius: 10px;">Modifier le profil</button>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-12">
-                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                                <ul class="nav nav-tabs mb-4" id="profileTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="basicInfo-tab" data-bs-toggle="tab" data-bs-target="#basicInfo" type="button" role="tab" aria-controls="basicInfo" aria-selected="true">Informations de base</button>
                                     </li>
-                                    
                                 </ul>
-                                <div class="tab-content ml-1" id="myTabContent">
+                                <div class="tab-content" id="profileTabsContent">
                                     <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
-                                        
-
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">nom complet</label>
+                                                <label class="fw-bold">Nom complet</label>
                                             </div>
-                                           
                                             <div class="col-md-8 col-6">
                                                 Jamshaid Kamran
                                             </div>
@@ -144,109 +149,106 @@
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">date de naissance</label>
+                                                <label class="fw-bold">Date de naissance</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                March 22, 1994.
+                                                22 Mars 1994
                                             </div>
                                         </div>
                                         <hr />
-                                        
-                                        
+
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">adress</label>
+                                                <label class="fw-bold">Adresse</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                            casablanca Rue hassan 2 ,residece andra
+                                                Casablanca, Rue Hassan 2, Résidence Andra
                                             </div>
                                         </div>
                                         <hr />
+
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">matricule de voiture</label>
+                                                <label class="fw-bold">Matricule de voiture</label>
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 A 122546
                                             </div>
                                         </div>
-                                
                                         <hr />
-
                                     </div>
-                                 
                                 </div>
-
-                                <button class="btn btn-primary w-100 py-3" type="button">modifier profile</button>
                             </div>
                         </div>
-
-
                     </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Hidden Form for Profile Update -->
+        <div id="update-form-modal" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modifier vos informations</h5>
+                        <button type="button" class="btn-close" id="close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Votre nom">
+                                        <label for="name">Nom</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+                                        <label for="prenom">Prénom</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Votre email">
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="telephone" placeholder="Téléphone">
+                                        <label for="telephone">Téléphone</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="date-naissance" placeholder="Date de naissance">
+                                        <label for="date-naissance">Date de naissance</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="pays" placeholder="Pays">
+                                        <label for="pays">Pays</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="ville" placeholder="Ville">
+                                        <label for="ville">Ville</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" style="border-radius: 10px;" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary" style="border-radius: 10px;">Enregistrer</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-</section>
-
-<div class="col-md-6 contact-form wow fadeIn bg-light p-4 shadow-sm" style="top:100px;left:100px;z-index:50;" data-wow-delay="0.1s">
-    <img src="<?=ROOT?>images/fermer.png" alt="">
-    <h4 class="mb-4">modifer vos informations</h4>
-    <div class="">
-        <form>
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-                        <label for="name">Nom</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-                        <label for="name">Prenom</label>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-floating">
-                        <input type="email" class="form-control" id="email" placeholder="Your Email">
-                        <label for="email">Email</label>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="telephone" placeholder="telephone">
-                        <label for="telephone">Telephone</label>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="date-naissance" placeholder="date-naissance">
-                        <label for="date-naissance">Date Naissance</label>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="pay" placeholder="pay">
-                        <label for="pay">Date Naissance</label>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="ville" placeholder="ville">
-                        <label for="ville">Date Naissance</label>
-                    </div>
-                </div>
-                                
-                <div class="col-12">
-                    <button class="btn btn-primary w-100 py-3" type="button">Enregistrer</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+    </main>
 
 
     <!-- Footer Start -->
@@ -285,8 +287,8 @@
                     <h4 class="text-light mb-4">Newsletter</h4>
                     <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        <input class="form-control w-100 py-3 ps-4 pe-5" style="border-radius: 10px;"  type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" style="border-radius: 10px;">SignUp</button>
                     </div>
                 </div>
             </div>
@@ -310,20 +312,30 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top" style="border-radius: 10px;"><i class="bi bi-arrow-up"></i></a>
 
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?=ROOT?>libs/wow/wow.min.js"></script>
-    <script src="<?=ROOT?>libs/easing/easing.min.js"></script>
-    <script src="<?=ROOT?>libs/waypoints/waypoints.min.js"></script>
-    <script src="<?=ROOT?>libs/counterup/counterup.min.js"></script>
-    <script src="<?=ROOT?>libs/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../public/libs/wow/wow.min.js"></script>
+    <script src="../public/libs/easing/easing.min.js"></script>
+    <script src="../public/libs/waypoints/waypoints.min.js"></script>
+    <script src="../public/libs/counterup/counterup.min.js"></script>
+    <script src="../public/libs/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="<?=ROOT?>js/main.js"></script>
+    <script src="../public/js/main.js"></script>
+   
+    <script>
+        
+        const modifierProfileBtn = document.getElementById('modifier-profile-btn');
+        const updateFormModal = new bootstrap.Modal(document.getElementById('update-form-modal'));
+
+        modifierProfileBtn.addEventListener('click', () => {
+            updateFormModal.show();
+        });
+    </script>
 </body>
 
 </html>
