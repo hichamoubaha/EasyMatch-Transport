@@ -53,7 +53,7 @@
 <body class="bg-light">
 
 <div class="container mt-5">
-    <form  action="/controllers/" method="POST" class="card p-4 shadow">
+    <form  action="/controllers/TrajetController.php" method="POST" class="card p-4 shadow">
         <!-- Stepper Header -->
         <div class="stepper">
             <div class="step active" data-step="1">📍 Départ</div>
@@ -161,11 +161,11 @@
             <div id="routeSummary" class="mb-4"></div>
             <div id="map"></div>
 
-            <button type="submit" class="btn btn-success mt-4" onclick="submitForm()">🚀 voir le route</button>
+            <button class="btn btn-success mt-4" onclick="submitForm()">🚀 voir le route</button>
 
             <div class="d-flex justify-content-between mt-4">
                 <button class="btn btn-secondary" onclick="prevStep()">← Précédent</button>
-                <button type="submit" class="btn btn-success">🚀 Publier le trajet</button>
+                <button type="submit" class="btn btn-success"> Publier le trajet</button>
             </div>
         </div>
     </form>
@@ -304,7 +304,7 @@
                 const route = data.features[0].geometry.coordinates;
                 L.polyline(route.map(c => [c[1], c[0]]), { color: 'red' }).addTo(map);
                 map.fitBounds(L.latLngBounds(route.map(c => [c[1], c[0]])));
-                alert('Trajet publié avec succès !');
+                alert(' le Trajet creé avec succès !');
             }
         } catch (error) {
             console.error('Erreur:', error);
