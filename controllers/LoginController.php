@@ -1,11 +1,11 @@
 <?php
-require './Controller.php';
+
 use App\Models\User;
 
 class LoginController extends Controller
 {
 
-    public function index()
+    public function login()
     {
         $data = [];
 
@@ -44,7 +44,7 @@ class LoginController extends Controller
 
         }
 
-        return $this->view('login',$data);
+        return $this->view('Authentication/login',$data);
         
     }
 

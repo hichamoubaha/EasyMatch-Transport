@@ -1,11 +1,9 @@
 <?php
 
-
 class Controller{
     
-
     public function view($name, $data = []){
-        echo 'hello';
+        
         if(!empty($data))
             extract($data);
 
@@ -16,7 +14,7 @@ class Controller{
         }
         else{
 
-            $filename = '../app/views/404.view.php';
+            $filename = '../views/404.view.php';
             require_once $filename;
         
         }

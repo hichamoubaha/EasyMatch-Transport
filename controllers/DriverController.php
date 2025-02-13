@@ -1,5 +1,5 @@
 <?php
-use App\core\Controller;
+require_once __DIR__."/Controller.php";
 
 class DriverController extends Controller
 {
