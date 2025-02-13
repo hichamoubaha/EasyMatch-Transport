@@ -39,7 +39,7 @@ class Notification {
             $query->bindParam(':contenu', $this->contenu, PDO::PARAM_STR);
             $query->bindParam(':date', $this->date, PDO::PARAM_STR);
             $query->execute();
-        } catch (PDOException $error) {
+        } catch (PDOException $error) { 
             die("Error sending notification: " . $error->getMessage());
         }
     }
