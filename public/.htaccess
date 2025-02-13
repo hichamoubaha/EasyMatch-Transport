@@ -1,13 +1,10 @@
-
-<IfModule dir_module>
-    directoryIndex index.php
-</IfModule>
-
-Options -MultiViews
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteBase /Projet_sprint_2/EasyMatch-Transport/public/
+
+# Si le fichier ou dossier n'existe pas, rediriger vers index.php
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 
-RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
-
-
+# Définir l'index par défaut
+DirectoryIndex index.php
