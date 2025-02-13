@@ -16,7 +16,7 @@ CREATE TABLE users (
     ville VARCHAR(100),
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')),
     date_bloque DATE,
-    sex VARCHAR CHECK (post in ('M', 'F))
+    sex VARCHAR CHECK (post in ('M', 'F'))
 );
 
 CREATE TABLE verify_badge (

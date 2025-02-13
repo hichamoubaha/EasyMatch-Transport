@@ -53,7 +53,7 @@
 <body class="bg-light">
 
 <div class="container mt-5">
-    <div class="card p-4 shadow">
+    <form  action="/controllers/" method="POST" class="card p-4 shadow">
         <!-- Stepper Header -->
         <div class="stepper">
             <div class="step active" data-step="1">📍 Départ</div>
@@ -97,27 +97,78 @@
             </div>
         </div>
 
-        <!-- Step 4: Confirmation -->
-        <div class="step-content" id="step4">
-            <h5 class="mb-4">Détails du trajet</h5>
-            <div class="mb-3">
-                <label class="form-label">🚗 Capacité du véhicule</label>
-                <select id="capacity" class="form-select" required>
-                    <option value="1m³">1m³ (Petit colis)</option>
-                    <option value="3m³">3m³ (Moyen)</option>
-                    <option value="5m³">5m³ (Grand volume)</option>
-                </select>
+       <!-- Step 4: Confirmation -->
+<div class="step-content" id="step4">
+    <h5 class="mb-4">Détails du trajet</h5>
+    
+    <!-- Vehicle Details -->
+    <div class="row g-3 mb-4">
+        <!-- Capacity -->
+        <div class="col-md-6">
+            <label class="form-label">🚗 Capacité du véhicule</label>
+            <select id="capacity" class="form-select" required>
+                <option value="1m³">1m³ (Petit colis)</option>
+                <option value="3m³">3m³ (Moyen)</option>
+                <option value="5m³">5m³ (Grand volume)</option>
+            </select>
+        </div>
+
+        <!-- Vehicle Type -->
+        <div class="col-md-6">
+            <label class="form-label" for="vehicule">Type de véhicule</label>
+            <select class="form-select" id="vehicule" name="vehicule" required>
+                <option value="">Sélectionner</option>
+                <option value="pickup">Pick-up</option>
+                <option value="camion-frigo">Camion Frigorifique</option>
+                <option value="car">Voiture</option>
+                <option value="triporteur">Triporteur</option>
+                <option value="moto">Moto</option>
+                <option value="taxi-petit">Petit Taxi</option>
+                <option value="camion">Camion</option>
+                <option value="taxi-grand">Grand Taxi</option>
+            </select>
+        </div>
+
+        <!-- Vehicle Registration -->
+        <div class="col-md-6">
+            <label class="form-label" for="matriculeVehicule">Immatriculation du véhicule</label>
+            <input class="form-control" type="text" id="matriculeVehicule" name="matriculeVehicule" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label" for="dateFin">Date de debut de l'annonce</label>
+            <input class="form-control" type="date" id="dateFin" name="dateFin" required>
+        </div>
+        <!-- End Date -->
+        <div class="col-md-6">
+            <label class="form-label" for="dateFin">Date de fin de l'annonce</label>
+            <input class="form-control" type="date" id="dateFin" name="dateFin" required>
+        </div>
+
+        <!-- Fragile Option -->
+        <div class="col-12">
+            <label class="form-label d-block">Colis fragile</label>
+            <div class="btn-group" role="group" aria-label="Fragile options">
+                <input type="radio" class="btn-check" name="fragile" id="fragileNon" autocomplete="off">
+                <label class="btn btn-outline-primary" for="fragileNon" onclick="toggleFragile('non')">Non</label>
+
+                <input type="radio" class="btn-check" name="fragile" id="fragileOui" autocomplete="off">
+                <label class="btn btn-outline-primary" for="fragileOui" onclick="toggleFragile('oui')">Oui</label>
             </div>
+        </div>
+    </div>
 
             <div id="routeSummary" class="mb-4"></div>
             <div id="map"></div>
 
+            <button type="submit" class="btn btn-success mt-4" onclick="submitForm()">🚀 voir le route</button>
+
             <div class="d-flex justify-content-between mt-4">
                 <button class="btn btn-secondary" onclick="prevStep()">← Précédent</button>
-                <button type="submit" class="btn btn-success" onclick="submitForm()">🚀 Publier le trajet</button>
+                <button type="submit" class="btn btn-success">🚀 Publier le trajet</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
 <script>

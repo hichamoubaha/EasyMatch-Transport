@@ -1,0 +1,15 @@
+{
+    "name": "youco/easy-match-transport",
+    "autoload": {
+        "psr-4": {
+            "APP\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "abderrazzak imily",
+            "email": "imily2024@gmail.com"
+        }
+    ],
+    "require": {}
+}
