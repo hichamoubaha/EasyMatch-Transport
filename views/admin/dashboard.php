@@ -173,7 +173,7 @@
     </div>
 </section>
 
-            <!-- Statistics & Reports -->
+            <!-- Statistics & Reports . -->
             <section id="stats" class="mt-12">
                 <h3 class="text-2xl font-semibold mb-4 flex items-center">
                     <i class="ph ph-chart-line text-blue-600 mr-2"></i> Statistics & Reports
