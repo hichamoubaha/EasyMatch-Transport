@@ -30,7 +30,7 @@ CREATE TABLE notification (
     id SERIAL PRIMARY KEY,
     recepteur INT REFERENCES users(id) ON DELETE CASCADE,
     contenu TEXT,
-    date DATE 
+    date DATE DEFAULT CURRENT_DATE 
 );
 
 CREATE TABLE avis (
@@ -41,7 +41,6 @@ CREATE TABLE avis (
     message TEXT,
     note INT  
 );
-
 
 CREATE TABLE trajet (
     id SERIAL PRIMARY KEY,
