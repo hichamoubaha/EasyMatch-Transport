@@ -64,6 +64,14 @@ CREATE TABLE avis (
     message_expediteur TEXT
 );
 
+
+ALTER TABLE trajet
+ADD COLUMN available_colis VARCHAR(255),
+ADD COLUMN available_fragile VARCHAR(255);
+
+ALTER TABLE reservation
+ADD COLUMN statut VARCHAR(20) CHECK (statut IN ('en_attente', 'accepter'));
+
 CREATE TABLE trajet (
     id SERIAL PRIMARY KEY,
     conducteur_id INT REFERENCES users(id) ON DELETE CASCADE,

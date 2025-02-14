@@ -10,7 +10,7 @@
     <div class="container">
         <div class="header-with-cart">
             <h1>Détails du Trajet</h1>
-            <a href="index.php?action=viewCart&user_id=<?php echo htmlspecialchars($userId); ?>" class="cart-icon">
+            <a href="index.php?action=viewCart&user_id=<?php echo htmlspecialchars($userId); ?>" class="cart-link">
                 🛒 Panier
                 <?php if (isset($cartCount) && $cartCount > 0): ?>
                     <span class="cart-count"><?php echo $cartCount; ?></span>
@@ -231,6 +231,8 @@
                     alert('Veuillez spécifier au moins un colis fragile.');
                     return false;
                 }
+
+            
 
                 if (totalFragile > totalColis) {
                     e.preventDefault();

@@ -1,6 +1,7 @@
 <?php
 require __DIR__."/../models/User.php";
 require __DIR__."/../function/functions.php";
+require __DIR__."/Controller.php";
 
 class AuthController extends Controller
 {

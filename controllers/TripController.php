@@ -37,7 +37,7 @@ class TripController {
 
     public function reserveTrip($userId) {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header("Location: index.php?user_id=" . $userId);
+            header("Location: index.php?action=showtrajet&user_id=" . $userId);
             exit();
         }
 
@@ -106,13 +106,10 @@ class TripController {
             exit();
         }
     }
-
     public function viewCart($userId) {
         try {
             $reservations = $this->tripModel->getUserReservations($userId);
             $cartCount = $this->tripModel->getCartCount($userId);
-            
-            // Pass the tripModel to the view
             require_once __DIR__ . '/../views/trips/cart.php';
         } catch (Exception $e) {
             $_SESSION['error_message'] = "Erreur lors du chargement du panier : " . $e->getMessage();

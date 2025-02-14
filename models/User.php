@@ -1,4 +1,5 @@
 <?php
+
 // Fichier: models/User.php
 
 class User {
@@ -20,25 +21,26 @@ class User {
     public $date_bloque;
     public $sexe;
 
-    public function __construct($db) {
-        $this->conn = $db;
+    public function __construct() {
+        $this->pdo = new Database;
     }
 
     public function getUserById($id) {
         $query = "SELECT * FROM " . $this->table . " WHERE id = :id";
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function create() {
+    
+    /*public function create() {
         $query = "INSERT INTO " . $this->table . " 
                   (nom, prenom, phone, email, password, date_naissance, post, matricule, pays, ville, statut, sexe) 
                   VALUES 
                   (:nom, :prenom, :phone, :email, :password, :date_naissance, :post, :matricule, :pays, :ville, :statut, :sexe)";
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->pdo->prepare($query);
 
         $this->nom = htmlspecialchars(strip_tags($this->nom));
         $this->prenom = htmlspecialchars(strip_tags($this->prenom));
@@ -69,7 +71,7 @@ class User {
             return true;
         }
         return false;
-    }
+    }*/
 
     public function update() {
         $query = "UPDATE " . $this->table . "
@@ -78,7 +80,7 @@ class User {
                       pays = :pays, ville = :ville, statut = :statut, sexe = :sexe
                   WHERE id = :id";
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->pdo->prepare($query);
 
         $this->nom = htmlspecialchars(strip_tags($this->nom));
         $this->prenom = htmlspecialchars(strip_tags($this->prenom));
@@ -113,7 +115,7 @@ class User {
     public function delete() {
         $query = "DELETE FROM " . $this->table . " WHERE id = :id";
 
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this->pdo->prepare($query);
 
         $this->id = htmlspecialchars(strip_tags($this->id));
 
@@ -122,6 +124,33 @@ class User {
         if($stmt->execute()) {
             return true;
         }
+        return false;
+    }
+
+    public function getUser($data , $data_not = []){
+
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+
+        $query = "SELECT * FROM public.users WHERE ";
+        foreach($keys as $key){
+
+            $query .= $key ." = :" .$key . " && ";
+        }
+
+        foreach($keys_not as $key){
+
+            $query .= $key ." = :" .$key . " && ";
+        }
+
+        $query = rtrim($query, ' && ');
+
+        $data = array_merge($data , $data_not);
+        $result = $this->query($query ,$data);
+
+        if($result) 
+        return $result[0];
+
         return false;
     }
 
@@ -159,6 +188,33 @@ class User {
         }
 
         return $errors;
+    }
+
+    public function insertUser($data){
+        
+        $keys = array_keys($data);
+        $data['password'] = password_hash($data['password'],PASSWORD_BCRYPT);
+        $query = "INSERT INTO public.users(". implode(",",$keys) .")" . " VALUES(:". implode(",:",$keys) .")";
+        $this->query($query,$data);
+
+    }
+
+
+    protected function query($query,$data = []){
+
+        $stmt = $this->pdo->getConnection()->prepare($query);
+        $check = $stmt->execute($data);
+
+        if($check){
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            if(is_array($result) && count($result)){
+                return $result;
+            }
+
+        }
+        else return false;
+
     }
 }
 ?>

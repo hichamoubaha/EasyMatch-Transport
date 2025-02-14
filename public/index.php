@@ -7,6 +7,8 @@ require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../models/Trip.php';
 require_once __DIR__ . '/../controllers/TripController.php';
+require_once __DIR__ . '/../controllers/AuthController.php';
+require_once __DIR__ . '/../controllers/DriverController.php';
 
 $database = new Database();
 $db = $database->getConnection();
@@ -20,6 +22,8 @@ $tripId = $_GET['id'] ?? null;
 $userId = $_GET['user_id'] ?? $_POST['user_id'] ?? 1;
 
 $tripController = new TripController($db);
+$auth = new AuthController;
+$driver = new DriverController;
 
 try {
     switch ($action) {
