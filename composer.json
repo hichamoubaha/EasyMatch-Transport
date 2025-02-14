@@ -5,11 +5,5 @@
             "Youco\\EasyMatchTransport\\": "easy-match-transport/"
         }
     },
-    "authors": [
-        {
-            "name": "abderrazzak imily",
-            "email": "imily2024@gmail.com"
-        }
-    ],
     "require": {}
 }

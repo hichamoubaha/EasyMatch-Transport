@@ -4,5 +4,5 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define('SERVERNAME','localhost');
     define('DBNAME','');
     define('USERNAME','');
-    define('PASSWORD','1111');
+    define('PASSWORD','');
 }

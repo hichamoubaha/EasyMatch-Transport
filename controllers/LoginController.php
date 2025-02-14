@@ -1,9 +1,12 @@
 <?php
-
-use App\Models\User;
+require __DIR__."/../models/User.php";
 
 class LoginController extends Controller
 {
+
+    public function index(){
+        require __DIR__.'/../views/Authentication/login.view.php';
+    }
 
     public function login()
     {

@@ -1,6 +1,4 @@
 <?php
-
-
 function show($data)
 {
 
@@ -20,6 +18,6 @@ function escape($string)
 function redirect($path)
 {
 
-	header("Location: ". ROOT.$path);
+	header("Location: ". 'http://localhost/EasyMatch-Transport/public/?action='.$path);
 
 }

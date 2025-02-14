@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 
-class Notification
+class EmailNotification
 {
 
 
@@ -45,7 +45,7 @@ function sendNotification($email, $status) {
 }
 
 
-$userEmail = 'utilisateur@example.com';  
+$userEmail = '';  
 $demandeStatus = 'accepted';  
 
 sendNotification($userEmail, $demandeStatus);

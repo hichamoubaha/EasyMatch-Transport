@@ -1,12 +1,14 @@
 <?php
-
-use App\core\Controller;
-use App\Models\User;
+require __DIR__.'/../models/User.php';
 
 class SignupController extends Controller
 {
 
-    public function index()
+    public function index(){
+        require __DIR__.'/../views/Authentication/signup.view.php';
+    }
+
+    public function signup()
     {
         $data = [];
 

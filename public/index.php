@@ -17,7 +17,8 @@ $action = $_GET['action'] ?? 'index';
 $id = $_GET['id'] ?? null;
 
 $controller = new TripController();
-$login = new LoginController;
+$auth = new AuthController();
+$driver = new DriverController();
 
 $trajetController = new TrajetController();
 try {

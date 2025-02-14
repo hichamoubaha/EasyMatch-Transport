@@ -11,7 +11,7 @@ require_once __DIR__ . "/../models/Trajet.php";
 class TrajetController {
     
     public function index() {
-        require_once ROOT_PATH . '/views/DRIVER/RIDE.php';
+        require_once __DIR__ . '/views/DRIVER/RIDE.php';
     }
 
     public function createTraject() {
