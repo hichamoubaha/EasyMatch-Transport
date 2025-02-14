@@ -155,7 +155,7 @@
 						<hr class="mb-6 border-t" />
 						<div class="text-center">
 							<a class="inline-block text-sm text-blue-500 dark:text-blue-500 align-baseline hover:text-blue-800"
-								href="./index.html">
+								href="login.view.php">
 								Vous avez déjà un compte ? Connectez-vous !
 							</a>
 						</div>

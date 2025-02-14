@@ -1,7 +1,7 @@
 CREATE DATABASE koulia;
 
 \c koulia;
-
+   
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(100),
@@ -17,6 +17,7 @@ CREATE TABLE users (
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')) DEFAULT 'pending',
     date_bloque DATE,
 <<<<<<< HEAD
+<<<<<<< HEAD
     sexe VARCHAR CHECK (post in ('M', 'F))
     
 =======
@@ -24,6 +25,9 @@ CREATE TABLE users (
 <<<<<<< HEAD
 >>>>>>> origin/abdelkarim
 =======
+=======
+    sexe VARCHAR CHECK (sexe in ('M', 'F'))
+>>>>>>> origin/Abderrahmane-Ahouari
     -----
 >>>>>>> origin/abderrazzak
 );
@@ -50,22 +54,23 @@ CREATE TABLE verify_badge (
     id SERIAL PRIMARY KEY,
     conducteur INT REFERENCES users(id) ON DELETE CASCADE,
     badge_verifier VARCHAR CHECK (badge_verifier in ('oui', 'non')),
-    nombre_etoile INT
+    nombre_etoile INT 
 );
 
 CREATE TABLE notification (
     id SERIAL PRIMARY KEY,
     recepteur INT REFERENCES users(id) ON DELETE CASCADE,
     contenu TEXT,
-    date DATE
+    date DATE DEFAULT CURRENT_DATE 
 );
 
 CREATE TABLE avis (
     id SERIAL PRIMARY KEY,
-    expediteur INT REFERENCES users(id) ON DELETE CASCADE,
-    conducteur INT REFERENCES users(id) ON DELETE CASCADE,
-    message_conducteur TEXT,
-    message_expediteur TEXT
+    traget INT REFERENCES trajet(id) ON DELETE CASCADE, 
+    expediteur INT REFERENCES utilisateurs(id) ON DELETE CASCADE, 
+    destinataire INT REFERENCES utilisateurs(id) ON DELETE CASCADE, 
+    message TEXT,
+    note INT  
 );
 
 
