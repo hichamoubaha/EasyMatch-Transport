@@ -9,6 +9,9 @@ require_once ROOT_PATH. '/controllers/DriverController.php';
 require_once ROOT_PATH. '/controllers/UserController.php';
 require_once ROOT_PATH. '/controllers/AuthController.php';
 require_once ROOT_PATH. '/controllers/AdminController.php';
+require_once ROOT_PATH. '/controllers/AdminOfferController.php';
+require_once ROOT_PATH. '/controllers/AdminAvisController.php';
+require_once ROOT_PATH. '/controllers/TransactionController.php';
 
 $action = $_GET['action'] ?? 'index';
 $id = $_GET['id'] ?? null;

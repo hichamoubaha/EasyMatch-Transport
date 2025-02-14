@@ -12,11 +12,11 @@
             <h2 class="text-xl font-bold mb-4">Navigation</h2>
             <ul>
                 
-                <li class="mb-2"><a href="dashboard.view.php" class="hover:underline">Gestion des utilisateurs</a></li>
-                <li class="mb-2"><a href="offers.view.php" class="hover:underline">Gestion des annonces</a></li>
-                <li class="mb-2"><a href="transactions.view.php" class="hover:underline">Suivi des transactions</a></li>
-                <li class="mb-2"><a href="avis.view.php" class="hover:underline">Gestion des évaluations</a></li>
-                <li class="mb-2"><a href="statistics.view.php" class="hover:underline">Statistiques et rapports</a></li>
+                <li class="mb-2"><a href="?action=admin/dashboard" class="hover:underline">Gestion des utilisateurs</a></li>
+                <li class="mb-2"><a href="?action=admin/offers" class="hover:underline">Gestion des annonces</a></li>
+                <li class="mb-2"><a href="?action=admin/transactions" class="hover:underline">Suivi des transactions</a></li>
+                <li class="mb-2"><a href="?action=admin/avis" class="hover:underline">Gestion des évaluations</a></li>
+                <li class="mb-2"><a href="?action=admin/statistics" class="hover:underline">Statistiques et rapports</a></li>
             </ul>
         </div>
 
