@@ -166,6 +166,27 @@ class User
 
     }
 
+    public function updateUser($id, $data, $id_column = 'id'){
+
+        $keys = array_keys($data);
+
+        $query = "UPDATE public.users SET ";
+
+        foreach($keys as $key){
+            $query .= $key .' = :'. $key .', ';
+        }
+
+        $query = trim($query, ', ');
+
+        $query .= " WHERE $id_column = :$id_column ";
+
+        $data[$id_column] = $id;
+    
+        $this->query($query,$data);
+
+        return false;
+
+    }
 
     public function getUser($data , $data_not = []){
 
@@ -189,7 +210,7 @@ class User
         $result = $this->query($query ,$data);
 
         if($result) 
-        return $result[0];
+        return $result[0];  
 
         return false;
     }
