@@ -30,11 +30,16 @@
     <!-- Template Stylesheet -->
     <link href="../public/css/style.css" rel="stylesheet">
     
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <style>
         .vertical-divider {
             width: 1px;
             height: 20px;
             background-color: #0d6efd; /* Bootstrap primary color */
+        }
+        
+        .notif{
+            display: none;
         }
     </style>
 </head>
@@ -59,6 +64,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
+
+            <div id="notification_popup" class="notif absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-lg p-3">
+                    <h3 class="font-semibold text-lg">Notifications</h3>
+                    <ul>
+                        <li class="border-b py-2">New message received <span class="text-gray-500 text-sm">12/02/2025</span></li>
+                        <li class="border-b py-2">Your order has been shipped <span class="text-gray-500 text-sm">11/02/2025</span></li>
+                        <li class="py-2">Reminder: Meeting at 3 PM <span class="text-gray-500 text-sm">10/02/2025</span></li>
+                    </ul>
+                </div>
+                
+                <div class="cursor-pointer" id="notification-button">
+                <svg xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" width="40" height="40" viewBox="0 0 30 30">
+                    <path d="M 15 3 C 13.9 3 13 3.9 13 5 L 13 5.265625 C 9.5610846 6.1606069 7 9.2910435 7 13 L 7 15.400391 C 7 17.000391 6.6996094 18.5 6.0996094 20 L 23.900391 20 C 23.300391 18.5 23 17.000391 23 15.400391 L 23 13 C 23 9.2910435 20.438915 6.1606069 17 5.265625 L 17 5 C 17 3.9 16.1 3 15 3 z M 5 22 A 1.0001 1.0001 0 1 0 5 24 L 12.173828 24 C 12.068319 24.312339 12 24.644428 12 25 C 12 26.7 13.3 28 15 28 C 16.7 28 18 26.7 18 25 C 18 24.644428 17.931681 24.312339 17.826172 24 L 25 24 A 1.0001 1.0001 0 1 0 25 22 L 5 22 z"></path>
+                </svg>       
+                </div>
+
+                
                 <a href="index.html" class="nav-item nav-link">Home</a>
                 <a href="about.html" class="nav-item nav-link">About</a>
                 <a href="service.html" class="nav-item nav-link">Services</a>
@@ -335,7 +357,31 @@
         modifierProfileBtn.addEventListener('click', () => {
             updateFormModal.show();
         });
-    </script>
+
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const notificationPopup = document.getElementById("notification_popup");
+    const notification_btn = document.getElementById("notification-button");
+    
+
+    notification_btn.addEventListener("click", function () {
+            if (notificationPopup.style.display === "none" ) {
+                notificationPopup.style.display = "block";
+            } else {
+                notificationPopup.style.display = "none";
+            }
+        });
+    
+});
+
+
+
+</script>
+
+    
+
 </body>
 
 </html>
