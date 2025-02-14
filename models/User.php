@@ -15,18 +15,9 @@ class User
 
     private $pdo;
     
-    public function __contruct($id_user,$nom,$prenom,$email,$telephone,$date_naissance,$role,$motdepass)
+    public function __construct()
     {
 
-        $this->id_user = $id_user;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->email = $email;
-        $this->telephone = $telephone;
-        $this->date_naissance = $date_naissance;
-        $this->role = $role;
-        $this->motdepass = $motdepass;
-        
         $this->pdo = new Database;
     }
 
@@ -117,7 +108,7 @@ class User
 
     public function validate($data){
 
-        if(isset($data['nom']) && isset($data['prenom']) && isset($data['role']) && isset($data['date-naissance'])){
+        if(isset($data['nom']) && isset($data['prenom']) && isset($data['post']) && isset($data['date-naissance'])){
             if(empty($data['nom'])){
                 $this->errors['firstname'] = 'First Name est obligatoire !';
             }
