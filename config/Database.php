@@ -1,10 +1,6 @@
 <?php
-
-namespace Config;
-
-use PDO;
-use PDOException;
 class Database {
+
     private $host = "localhost";
     private $database = "koulia";
     private $username = "postgres";

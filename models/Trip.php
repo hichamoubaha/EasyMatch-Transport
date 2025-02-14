@@ -1,6 +1,5 @@
 <?php
 
-namespace App\Models;
 class Trip {
     private $conn;
     private $table = 'trajet';

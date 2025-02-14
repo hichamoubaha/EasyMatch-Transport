@@ -1,6 +1,7 @@
 <?php
-namespace Models;
-use Config\Database;
+
+require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/User.php';
 
 class Driver extends User {
     private $license_number;

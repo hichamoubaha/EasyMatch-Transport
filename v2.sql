@@ -16,7 +16,7 @@ CREATE TABLE users (
     ville VARCHAR(100),
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')) DEFAULT 'pending',
     date_bloque DATE,
-    sexe VARCHAR CHECK (post in ('M', 'F'))
+    sexe VARCHAR CHECK (sexe in ('M', 'F'))
     -----
 );
 
@@ -68,8 +68,7 @@ CREATE TABLE trajet (
     matricule_vehicule VARCHAR(100),
     size_colis VARCHAR(50),
     package_car TEXT,
-    note TEXT,
-    description TEXT 
+    note TEXT
 );
 -------
 

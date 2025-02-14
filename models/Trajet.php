@@ -1,8 +1,7 @@
 <?php
 
-// namespace model;
 
-use Config\Database;
+require_once __DIR__ . '/../config/Database.php';
 
 
 

@@ -6,12 +6,14 @@
 
 require_once __DIR__ . "/../models/Trajet.php";
 
-// use Exception;
+// use Exception;s
+require_once __DIR__ . "/Controller.php";
 
-class TrajetController {
+
+class TrajetController extends Controller {
     
     public function index() {
-        require_once __DIR__ . '/views/DRIVER/RIDE.php';
+        return$this->view('Authentication/login');
     }
 
     public function createTraject() {
