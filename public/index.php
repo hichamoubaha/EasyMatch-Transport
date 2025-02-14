@@ -95,19 +95,24 @@ try {
 
 
 
-         case 'createTraject':
-            $trajetController->createTraject();
-            break;
-            case 'login' : $auth->Login();
-            break;
-            case 'showlogin' : $auth->viewLogin();
-            break;
-            case 'signup' : $auth->signup();
-            break;
-            case 'showsignup' : $auth->viewSignUp();
-            break;
-            case 'driver' : $trajetController->index();
-            break;
+
+
+
+
+    case 'login' : $auth->Login(); 
+    break;
+    case 'showlogin' : $auth->viewLogin();
+    break;
+    case 'signup' : $auth->signup();
+    break;
+    case 'showsignup' : $auth->viewSignUp();
+    break;
+    case 'driver' : $driver->index();
+    break;
+    case 'showride' : $trajetController->index();
+    break;
+    case 'createTraject' : $trajetController->createTraject();
+    
     }
 } catch (Exception $e) {
     echo "Une erreur est survenue : " . $e->getMessage();

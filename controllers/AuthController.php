@@ -80,4 +80,11 @@ class AuthController extends Controller
         return $this->view('Authentication/signup',$data);
         
     }
+
+    public function logout(){
+        unset($_SESSION);
+        session_destroy();
+
+        redirect('home');
+    }
 }

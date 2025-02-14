@@ -2,13 +2,14 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
+require "../config/email-details.php";
 
 class EmailNotification
 {
 
 
-function sendNotification($email, $status) {
+public static function sendNotification($email, $status) {
 
     $mail = new PHPMailer(true);
 
@@ -17,11 +18,11 @@ function sendNotification($email, $status) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; 
         $mail->SMTPAuth = true;
-        $mail->Username = '';  
-        $mail->Password = '';     
+        $mail->Username = EMAIL;  
+        $mail->Password = PASSWORD;     
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
         $mail->Port = 587;  
-
+        
         
         $mail->setFrom('votre_email@gmail.com', 'EasyMatch Transport');
         $mail->addAddress($email);  
@@ -45,9 +46,9 @@ function sendNotification($email, $status) {
 }
 
 
-$userEmail = '';  
-$demandeStatus = 'accepted';  
-
-sendNotification($userEmail, $demandeStatus);
-
 }
+
+$userEmail = 'abdelkarimmouss73@gmail.com'; // Remplacez par l'e-mail du destinataire
+$demandeStatus = 'accepted'; // Statut de la demande
+
+EmailNotification::sendNotification($userEmail, $demandeStatus);

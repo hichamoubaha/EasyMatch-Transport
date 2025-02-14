@@ -66,5 +66,14 @@ class TrajetController extends Controller {
             }
         }
     }
+
+
+
+    public function getDriverTraject() {
+        $trajet = new Trajet();
+        $trajet->setDriver_id($_SESSION['USER']->id);
+        $trajets = $trajet->GetDriverRide();
+        return $trajets;
+    }
 }
 ?>

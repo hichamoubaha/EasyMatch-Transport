@@ -160,6 +160,7 @@ class User
 
     }
 
+
     public function getUser($data , $data_not = []){
 
         $keys = array_keys($data);

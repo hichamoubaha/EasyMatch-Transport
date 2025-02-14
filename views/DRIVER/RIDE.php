@@ -4,7 +4,11 @@
 
 $user_id = $_SESSION['USER']->id;
 
-var_dump($user_id);
+// var_dump($user_id);
+
+
+require_once '../views/components/header.php';
+
 
 ?>
 
@@ -183,6 +187,10 @@ var_dump($user_id);
         </div>
     </form>
 </div>
+
+
+
+<?php  require_once '../views/components/footer.php' ;  ?>
 
 <script>
     let currentStep = 1;

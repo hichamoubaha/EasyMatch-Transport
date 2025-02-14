@@ -111,7 +111,7 @@ public function isAlreadyExist() {
     $conn = $database->getConnection();
 
     $sql = "SELECT * FROM trajet WHERE conducteur_id = :conducteur_id AND point_depart = :point_depart 
-            AND point_arrivee = :point_arrivee AND date_depart = :date_depart AND date_darrivee = :date_darrivee 
+            AND point_destination = :point_arrivee AND date_depart = :date_depart AND date_darrivee = :date_darrivee 
             AND typedevehicule = :typedevehicule AND capasitedevehicule = :capasitedevehicule 
             AND matricule_vehicule = :matriculeVehicule";
 
@@ -140,10 +140,10 @@ public function AddRide() {
         
         $sql = "INSERT INTO trajet 
                 (conducteur_id, point_depart, point_destination, date_offre, date_limite_offre, 
-                 type_vehicule, capasitedevehicule, trajet_itineraire, matricule_vehicule)
+                 type_vehicule, size_colis, trajet_itineraire, matricule_vehicule)
                 VALUES 
                 (:conducteur_id, :point_depart, :point_destination, :date_depart, :date_darrivee, 
-                 :typedevehicule, :capasitedevehicule, :etapesintermédiaires, :matriculeVehicule)";
+                 :typedevehicule, :capasitedevehicule, :trajet_itineraire, :matriculeVehicule)";
         
         $stmt = $conn->prepare($sql);
         $success =  $stmt->execute([
@@ -154,12 +154,22 @@ public function AddRide() {
             ':date_darrivee' => $this->date_darrivee,
             ':typedevehicule' => $this->typedevehicule,
             ':capasitedevehicule' => $this->capasitedevehicule,
-            ':etapesintermédiaires' => $this->etapesintermédiaires,
+            ':trajet_itineraire' => $this->etapesintermédiaires,
             ':matriculeVehicule' => $this->matriculeVehicule
         ]);
 
         if (!$success) {
             var_dump($stmt->errorInfo());
         }
+    }
+
+
+    public function getDriverRide() {
+        $database = new Database();
+        $conn = $database->getConnection();
+        $query = "SELECT * FROM trajet WHERE conducteur_id = :driver_id";
+        $stmt = $conn->prepare($query);
+        $stmt->execute(['driver_id' => $this->driver_id]);
+        return $stmt->fetchAll();
     }
 }
