@@ -81,6 +81,16 @@ CREATE TABLE demande_expediteur (
 
 );
 
+ALTER TABLE demande_expediteur
+ADD COLUMN conducteur_id INT;
+
+ALTER TABLE demande_expediteur
+ADD CONSTRAINT fk_conducteur
+FOREIGN KEY (id)
+REFERENCES (id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
 CREATE TABLE fragile_colier_reservé (
     id SERIAL PRIMARY KEY,
     demande_id INT REFERENCES demande_expediteur(id) ON DELETE CASCADE,

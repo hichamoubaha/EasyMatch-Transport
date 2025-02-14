@@ -113,6 +113,8 @@ try {
     break;
     case 'driver' : $driver->index();
     break;
+    case 'updatedemande' : $driver->index();
+    break;
     
     }
 } catch (Exception $e) {

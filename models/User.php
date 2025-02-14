@@ -88,7 +88,7 @@ class User
     }
 
 
-    private function query($query,$data = []){
+    protected function query($query,$data = []){
         
         $stmt = $this->pdo->getConnection()->prepare($query);
         $check = $stmt->execute($data);

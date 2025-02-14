@@ -34,16 +34,16 @@ class AuthController extends Controller
 
                         $_SESSION['USER'] = $dbuser;
                         
-                        // if($dbuser->post === 'expediteur'){
-                        //     redirect('sender');
-                        // }
-                        // else if($dbuser->post === 'conducteur'){
-                        //     redirect('driver');
-                        // }
+                        if($dbuser->post === 'expediteur'){
+                            header("Location: ?user_id=$dbuser->id");
+                        }
+                        else if($dbuser->post === 'conducteur'){
+                            header("Location: ?action=driver");
+                        }
 
-                        // else if($dbuser->post === 'admin'){
-                        //     redirect('dashboard');
-                        // }
+                        else if($dbuser->post === 'admin'){
+                            redirect('dashboard');
+                        }
         
                     }
                 }
