@@ -7,7 +7,7 @@ class Controller{
         if(!empty($data))
             extract($data);
 
-        $filename = '../views/'. $name .'.view.php';
+        $filename = '../app/views/'. $name .'.view.php';
 
         if(file_exists($filename)){
             require_once $filename;

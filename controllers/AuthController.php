@@ -1,19 +1,7 @@
 <?php
-require __DIR__."/../models/User.php";
-require __DIR__."/../function/functions.php";
 
-class AuthController extends Controller
+class AuhtController extends Controller
 {
-
-    public function viewLogin()
-    {
-        return$this->view('Authentication/login');
-    }
-
-    public function viewSignUp(){
-        return$this->view('Authentication/signup');
-    }
-
 
     public function login()
     {
@@ -30,18 +18,18 @@ class AuthController extends Controller
 
                 $dbuser = $user->getUser($data);
                 if($dbuser){
-                    if (password_verify($_POST['password'],$dbuser->password)){
+                    if ($dbuser->password === $_POST['password']){
 
                         $_SESSION['USER'] = $dbuser;
                         
-                        if($dbuser->post === 'expediteur'){
+                        if($dbuser->role === 'expediteur'){
                             redirect('sender');
                         }
-                        else if($dbuser->post === 'conducteur'){
+                        else if($dbuser->role === 'conducteur'){
                             redirect('driver');
                         }
 
-                        else if($dbuser->post === 'admin'){
+                        else if($dbuser->role === 'admin'){
                             redirect('dashboard');
                         }
         
@@ -55,29 +43,6 @@ class AuthController extends Controller
         }
 
         return $this->view('Authentication/login',$data);
-        
-    }
-
-    public function signup()
-    {
-        $data = [];
-
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $user = new User;
-            $errors = [];
-
-            if($user->validate($_POST)){
-                unset($_POST['confirm_password']);
-                $user->insertUser($_POST);
-                return $this->view('Authentication/login');
-            }
-
-            $errors = $user->errors;
-            $data['errors'] = $errors;
-
-        }
-
-        return $this->view('Authentication/signup',$data);
         
     }
 }

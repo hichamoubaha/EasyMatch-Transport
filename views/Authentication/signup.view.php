@@ -21,16 +21,9 @@
 				<!-- Col -->
 				<div class="w-full lg:w-7/12 bg-white dark:bg-gray-700 p-5 rounded-lg lg:rounded-l-none">
 					<h3 class="py-4 text-2xl text-center text-gray-800 dark:text-white">Créer un compte</h3>
-                    <div class="text-center text-red-500 bg-red-100">
-                    <?php
-                    if(!empty($data['errors'])){
-                        echo implode('<br>',$data['errors']);
-                    }
-                    ?>
-                    </div>
 					<form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded" method="post" action="?action=signup">
 						<div class="mb-4 md:flex md:justify-between">
-							<div class="mb-4 md:mr-2 md:mb-0  flex-1">
+							<div class="mb-4 md:mr-2 md:mb-0">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="firstName">
                                     nom
                                 </label>
@@ -42,7 +35,7 @@
                                     name="nom"
                                 />
 							</div>
-							<div class="md:ml-2 flex-1">
+							<div class="md:ml-2">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="prenom">
                                     prenom
                                 </label>
@@ -56,7 +49,7 @@
 							</div>
 						</div>
                         <div class="mb-4 md:flex md:justify-between">
-							<div class="mb-4 md:mr-2 md:mb-0 flex-1">
+							<div class="mb-4 md:mr-2 md:mb-0">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="email">
                                     e-mail
                                 </label>
@@ -68,7 +61,7 @@
                                 name="email"
                             />
 							</div>
-							<div class="md:ml-2 flex-1">
+							<div class="md:ml-2">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="phone">
                                     tele
                                 </label>
@@ -81,7 +74,6 @@
                                 />
 							</div>
 						</div>
-
 						<div class="mb-4">
 							<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="date de naissance">
                                 date de naissance
@@ -91,35 +83,20 @@
                                 id="date_naissance"
                                 type="date"
                                 placeholder="date de naissance"
-                                name="date_naissance"
+                                name="date-naissance"
                             />
-                        </div>
 
-                        <div class="mb-4 flex">
-                            <div class="mb-4 md:mr-2 md:mb-0 flex-1">
-                            <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="post">
+                            <label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="role">
                                 role
                             </label>
-                            <select class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline" 
-                            name="post" id="">
+                            <select class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline" name="role" id="">
                                 <option value="expediteur">expediteur</option>
                                 <option value="conducteur">conducteur</option>
                             </select>
-                            </div>
-
-                            <div class="mb-4 md:mr-2 md:mb-0 flex-1">
-                                <label for="sexe" class="block mb-2 text-sm font-bold text-gray-700 dark:text-white">sexe</label>
-                                <select class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 dark:text-white border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                name="sexe" id="">
-                                    <option value="M">M</option>
-                                    <option value="F">F</option>
-                                </select>
-                            </label>
-                            </div>
 						</div>
 
-						<div class="mb-4 md:flex gap-2 ">
-							<div class="mb-4 md:mr-2 md:mb-0 flex-1">
+						<div class="mb-4 md:flex md:justify-between">
+							<div class="mb-4 md:mr-2 md:mb-0">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="password">
                                     Password
                                 </label>
@@ -131,7 +108,7 @@
                                     name="password"
                                 />
 							</div>
-							<div class="md:ml-2 flex-1">
+							<div class="md:ml-2">
 								<label class="block mb-2 text-sm font-bold text-gray-700 dark:text-white" for="c_password">
                                     Confirm Password
                                 </label>

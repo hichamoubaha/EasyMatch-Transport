@@ -1,7 +1,7 @@
 CREATE DATABASE koulia;
 
 \c koulia;
-   
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(100),
@@ -16,7 +16,7 @@ CREATE TABLE users (
     ville VARCHAR(100),
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')) DEFAULT 'pending',
     date_bloque DATE,
-    sexe VARCHAR CHECK (post in ('M', 'F'))
+    sexe VARCHAR CHECK (sexe in ('M', 'F'))
     -----
 );
 
@@ -36,23 +36,22 @@ CREATE TABLE verify_badge (
     id SERIAL PRIMARY KEY,
     conducteur INT REFERENCES users(id) ON DELETE CASCADE,
     badge_verifier VARCHAR CHECK (badge_verifier in ('oui', 'non')),
-    nombre_etoile INT 
+    nombre_etoile INT
 );
 
 CREATE TABLE notification (
     id SERIAL PRIMARY KEY,
     recepteur INT REFERENCES users(id) ON DELETE CASCADE,
     contenu TEXT,
-    date DATE DEFAULT CURRENT_DATE 
+    date DATE
 );
 
 CREATE TABLE avis (
     id SERIAL PRIMARY KEY,
-    traget INT REFERENCES trajet(id) ON DELETE CASCADE, 
-    expediteur INT REFERENCES utilisateurs(id) ON DELETE CASCADE, 
-    destinataire INT REFERENCES utilisateurs(id) ON DELETE CASCADE, 
-    message TEXT,
-    note INT  
+    expediteur INT REFERENCES users(id) ON DELETE CASCADE,
+    conducteur INT REFERENCES users(id) ON DELETE CASCADE,
+    message_conducteur TEXT,
+    message_expediteur TEXT
 );
 
 CREATE TABLE trajet (
@@ -69,8 +68,7 @@ CREATE TABLE trajet (
     matricule_vehicule VARCHAR(100),
     size_colis VARCHAR(50),
     package_car TEXT,
-    note TEXT,
-    description TEXT 
+    note TEXT
 );
 -------
 
@@ -90,6 +88,5 @@ CREATE TABLE fragile_colier_reservé (
     nbr_colier_fragile INT
 );
 
-ALTER TABLE users
-ADD COLUMN sexe VARCHAR(1) CHECK (sexe IN ('M', 'F'));
-    
+
+ALTER TABLE trajet ADD COLUMN statut VARCHAR CHECK (statut IN ('pending', 'accepted', 'refused')) DEFAULT 'pending';

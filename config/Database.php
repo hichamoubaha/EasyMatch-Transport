@@ -4,7 +4,7 @@ class Database {
     private $host = "localhost";
     private $database = "koulia";
     private $username = "postgres";
-    private $password = "moussi@25"; 
+    private $password = "rcad3210"; 
     private $conn = null;
 
     public function getConnection() {

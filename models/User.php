@@ -1,5 +1,4 @@
 <?php
-// require "../function/functions.php";
 
 class User
 {
@@ -16,9 +15,19 @@ class User
 
     private $pdo;
     
-    public function __construct()
+    public function __contruct($id_user,$nom,$prenom,$email,$telephone,$date_naissance,$role,$motdepass)
     {
-        $this->pdo = new Database();
+
+        $this->id_user = $id_user;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->email = $email;
+        $this->telephone = $telephone;
+        $this->date_naissance = $date_naissance;
+        $this->role = $role;
+        $this->motdepass = $motdepass;
+        
+        $this->pdo = new Database;
     }
 
     //getters and setters
@@ -108,20 +117,20 @@ class User
 
     public function validate($data){
 
-        if(isset($data['nom']) && isset($data['prenom']) && isset($data['post']) && isset($data['date_naissance'])){
+        if(isset($data['nom']) && isset($data['prenom']) && isset($data['role']) && isset($data['date-naissance'])){
             if(empty($data['nom'])){
-                $this->errors['firstname'] = 'Nom est obligatoire !';
+                $this->errors['firstname'] = 'First Name est obligatoire !';
             }
     
             if(empty($data['prenom'])){
-                $this->errors['lastname'] = 'Prenom est obligatoire !';
+                $this->errors['lastname'] = 'Last Name est obligatoire !';
             }
 
-            if(empty($data['post'])){
-                $this->errors['post'] = 'role est obligatoire';
+            if(empty($data['role'])){
+                $this->errors['role'] = 'role est obligatoire';
             }
     
-            if(empty($data['date_naissance'])){
+            if(empty($data['date-naissancec'])){
                 $this->errors['date-naissance'] = 'date de naissance est invalid';
             }
         }
@@ -137,7 +146,7 @@ class User
         }
 
         if(empty($data['password'])){
-            $this->errors['password'] = 'Password est obligatoire !';
+            $this->errors['password'] = 'Password is obligatoire !';
         }
 
         if(empty($this->errors)){
@@ -147,11 +156,12 @@ class User
         return false;
     }
 
-
     public function insertUser($data){
+
         $keys = array_keys($data);
-        $data['password'] = password_hash($data['password'],PASSWORD_BCRYPT);
+
         $query = "INSERT INTO public.users(". implode(",",$keys) .")" . " VALUES(:". implode(",:",$keys) .")";
+
         $this->query($query,$data);
 
     }
@@ -181,6 +191,15 @@ class User
         return $result[0];
 
         return false;
+    }
+    public function getAllUsers() {
+        $query = "SELECT * FROM users";
+        return $this->query($query);
+    }
+    
+    public function updateUser Status($id, $status) {
+        $query = "UPDATE users SET statut = :statut WHERE id = :id";
+        $this->query($query, ['statut' => $status, 'id' => $id]);
     }
 
 }
