@@ -91,9 +91,5 @@ CREATE TABLE fragile_colier_reservé (
 );
 
 ALTER TABLE users
-<<<<<<< HEAD
-ADD COLUMN sexe VARCHAR(1) CHECK (sexe IN ('M', 'F'));
-=======
 ADD COLUMN sexe VARCHAR(1) CHECK (sexe IN ('M', 'F'));
     
->>>>>>> 5e2cda360b993026999066b25b9041cef8c53a9f
