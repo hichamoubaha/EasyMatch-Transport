@@ -16,9 +16,15 @@ CREATE TABLE users (
     ville VARCHAR(100),
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')),
     date_bloque DATE,
-    sex VARCHAR CHECK (post in ('M', 'F))
-    -----
+    sexe VARCHAR CHECK (post in ('M', 'F))
+    
 );
+
+select id , nom , prenom , sexe 
+from users
+tel que M signifie homme et si F dit Madame et voila si pour ca  pour peux stocker id de user expedeterur 
+
+
 
 -- CREATE TABLE admin (
 --     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE  

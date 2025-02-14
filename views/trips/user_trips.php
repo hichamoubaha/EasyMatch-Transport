@@ -3,41 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des Trajets - EasyMatch Transport</title>
-    <link rel="stylesheet" href="/Projet_sprint_2/EasyMatch-Transport/public/css/style.css">
+    <title>Trajets de l'Utilisateur - EasyMatch Transport</title>
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
     <div class="container">
-        <div class="header-with-cart">
-            <h1>Liste des Trajets Disponibles</h1>
-            <a href="index.php?action=viewCart&user_id=<?php echo htmlspecialchars($userId); ?>" class="cart-link">
-                🛒 Panier
-                <?php if (isset($cartCount) && $cartCount > 0): ?>
-                    <span class="cart-count"><?php echo $cartCount; ?></span>
-                <?php endif; ?>
-            </a>
-        </div>
-
-        <?php if (isset($_SESSION['success_message'])): ?>
-            <div class="alert alert-success">
-                <?php 
-                echo htmlspecialchars($_SESSION['success_message']);
-                unset($_SESSION['success_message']);
-                ?>
-            </div>
-        <?php endif; ?>
-
-        <?php if (isset($_SESSION['error_message'])): ?>
-            <div class="alert alert-danger">
-                <?php 
-                echo htmlspecialchars($_SESSION['error_message']);
-                unset($_SESSION['error_message']);
-                ?>
-            </div>
-        <?php endif; ?>
+        <h1>Trajets de <?php echo htmlspecialchars($user['prenom'] . ' ' . $user['nom']); ?></h1>
         
         <div class="trips-grid">
-            <?php while($trip = $trips->fetch(PDO::FETCH_ASSOC)) : ?>
+            <?php
+            $hasTrips = false;
+            while($trip = $trips->fetch(PDO::FETCH_ASSOC)) :
+                $hasTrips = true;
+            ?>
                 <div class="trip-card">
                     <div class="trip-header">
                         <h2><?php echo htmlspecialchars($trip['point_depart']); ?> → <?php echo htmlspecialchars($trip['point_destination']); ?></h2>
@@ -47,23 +25,15 @@
                     <div class="trip-info">
                         <div class="driver-info">
                             <div class="avatar">
-                                <?php echo strtoupper(substr($trip['conducteur_prenom'] ?? 'U', 0, 1)); ?>
+                                <?php echo strtoupper(substr($user['prenom'], 0, 1)); ?>
                             </div>
                             <div class="details">
-                                <p class="name">
-                                    <?php 
-                                    if (isset($trip['conducteur_prenom']) && isset($trip['conducteur_nom'])) {
-                                        echo htmlspecialchars($trip['conducteur_prenom'] . ' ' . $trip['conducteur_nom']);
-                                    } else {
-                                        echo "Conducteur non spécifié";
-                                    }
-                                    ?>
-                                </p>
+                                <p class="name"><?php echo htmlspecialchars($user['prenom'] . ' ' . $user['nom']); ?></p>
                                 <p class="vehicle"><?php echo htmlspecialchars($trip['matricule_vehicule']); ?></p>
                             </div>
                         </div>
 
-                        <?php if(isset($trip['trajet_itineraire']) && !empty($trip['trajet_itineraire'])) : ?>
+                        <?php if($trip['trajet_itineraire']) : ?>
                             <div class="route-info">
                                 <h3>Itinéraire</h3>
                                 <p><?php echo htmlspecialchars($trip['trajet_itineraire']); ?></p>
@@ -82,7 +52,7 @@
                             <?php endif; ?>
                         </div>
 
-                        <?php if(isset($trip['description']) && !empty($trip['description'])) : ?>
+                        <?php if($trip['description']) : ?>
                             <div class="description">
                                 <?php echo htmlspecialchars($trip['description']); ?>
                             </div>
@@ -93,12 +63,15 @@
                             <p>Valable jusqu'au: <?php echo date('d/m/Y', strtotime($trip['date_limite_offre'])); ?></p>
                         </div>
 
-                        <a href="index.php?action=tripDetails&id=<?php echo htmlspecialchars($trip['id']); ?>&user_id=<?php echo htmlspecialchars($userId); ?>" class="btn-details">
+                        <a href="index.php?action=showTrip&id=<?php echo $trip['id']; ?>" class="btn-details">
                             Voir les détails
                         </a>
                     </div>
                 </div>
             <?php endwhile; ?>
+            <?php if (!$hasTrips) : ?>
+                <p>Aucun trajet trouvé pour cet utilisateur.</p>
+            <?php endif; ?>
         </div>
     </div>
 </body>

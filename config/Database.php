@@ -1,9 +1,13 @@
 <?php
+// config/Database.php
+
+require_once __DIR__ . '/config.php';
+
 class Database {
-    private $host = "localhost";
-    private $database = "koulia";
-    private $username = "postgres";
-    private $password = "1111"; 
+    private $host = DB_HOST;
+    private $database = DB_NAME;
+    private $username = DB_USER;
+    private $password = DB_PASS;
     private $conn = null;
 
     public function getConnection() {
@@ -14,11 +18,9 @@ class Database {
                 $this->password
             );
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $this->conn;
         } catch(PDOException $e) {
-            echo "Erreur de connexion : " . $e->getMessage();
-            return null;
+            echo "Connection error: " . $e->getMessage();
         }
+        return $this->conn;
     }
 }
-?>

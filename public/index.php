@@ -1,28 +1,55 @@
 <?php
-// Point d'entrée de l'application
-define('ROOT_PATH', dirname(__DIR__));
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-require_once ROOT_PATH . '/config/Database.php';
-require_once ROOT_PATH . '/controllers/TripController.php';
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../models/Trip.php';
+require_once __DIR__ . '/../controllers/TripController.php';
 
-$action = $_GET['action'] ?? 'index';
-$id = $_GET['id'] ?? null;
+$database = new Database();
+$db = $database->getConnection();
 
-$controller = new TripController();
+if (!$db) {
+    die("Erreur de connexion à la base de données. Veuillez vérifier vos paramètres de configuration.");
+}
+
+$action = $_GET['action'] ?? ($_POST['action'] ?? 'index');
+$tripId = $_GET['id'] ?? null;
+$userId = $_GET['user_id'] ?? $_POST['user_id'] ?? 1; // Définir une valeur par défaut si non fournie
+
+$tripController = new TripController($db);
 
 try {
     switch ($action) {
-        case 'show':
-            if ($id) {
-                $controller->show($id);
-            } else {
-                throw new Exception("ID non spécifié");
-            }
+        case 'index':
+        case 'showtrajet':
+            $tripController->index($userId);
             break;
+            
+        case 'tripDetails':
+            if (!$tripId) {
+                throw new Exception("ID du trajet non spécifié");
+            }
+            $tripController->showTripDetails($tripId, $userId);
+            break;
+            
+        case 'reserve':
+            $tripController->reserveTrip($userId);
+            break;
+            
+        case 'viewCart':
+            $tripController->viewCart($userId);
+            break;
+            
         default:
-            $controller->index();
+            $tripController->index($userId);
             break;
     }
 } catch (Exception $e) {
-    echo "Une erreur est survenue : " . $e->getMessage();
+    $_SESSION['error_message'] = $e->getMessage();
+    error_log("Erreur : " . $e->getMessage());
+    header("Location: index.php?user_id=" . $userId);
+    exit();
 }
