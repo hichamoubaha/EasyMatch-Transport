@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__."/Controller.php";
 
-use App\Models\Driver;
+use Models\Driver;
 
 class DriverController extends Controller
 {

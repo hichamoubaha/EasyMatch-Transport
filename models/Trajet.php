@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+// namespace model;
 
-use App\Config\Database;
+use Config\Database;
 
 
 
@@ -105,6 +105,19 @@ return $this->matriculeVehicule;
 public function setMatriculeVehicule($matriculeVehicule) {
 $this->matriculeVehicule = $matriculeVehicule;
 }
+
+
+
+public function isAleradyExist() {
+
+$database = new Database();
+$conn = $database->getConnection();
+
+$sql = "SELECT * FROM trajet WHERE driver_id = :driver_id AND point_depart = :point_depart AND point_arrivee = :point_arrivee AND date_depart = :date_depart AND date_darrivee = :date_darrivee AND typedevehicule = :typedevehicule AND capasitedevehicule = :capasitedevehicule AND etapesintermédiaires = :etapesintermédiaires AND matricule_vehicule = :matriculeVehicule";
+
+
+}
+
 
 
 public function AddRide() {

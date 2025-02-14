@@ -1,11 +1,10 @@
 {
     "name": "youco/easy-match-transport",
-   "autoload": {
-    "psr-4": {
-        "App\\": "app/"
-    }
-}
-,
+    "autoload": {
+        "psr-4": {
+            "Youco\\EasyMatchTransport\\": "easy-match-transport/"
+        }
+    },
     "authors": [
         {
             "name": "abderrazzak imily",

@@ -1,10 +1,10 @@
 <?php
 
-
-use App\Controllers\TrajetController;
+// use Controllers\TrajetController;
 // Point d'entrée de l'application
 define('ROOT_PATH', dirname(__DIR__));
 
+require_once ROOT_PATH .'/controllers/TrajetController.php';
 
 require_once ROOT_PATH . '/config/Database.php';
 require_once ROOT_PATH . '/controllers/TripController.php';

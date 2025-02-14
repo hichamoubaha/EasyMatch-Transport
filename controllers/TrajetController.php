@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Controllers;
+// namespace Controllers;
 
-use App\Models\Trajet;
-use Exception;
+// use model\Trajet;
+
+require_once __DIR__ . "/../models/Trajet.php";
+
+// use Exception;
 
 class TrajetController {
     

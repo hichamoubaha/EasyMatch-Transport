@@ -2,7 +2,7 @@
 require_once ROOT_PATH . '/models/Trip.php';
 
 use App\Models\Trip;
-use App\Config\Database;
+use Config\Database;
 class TripController {
     private $tripModel;
 

@@ -1,6 +1,6 @@
 <?php
-namespace App\Models;
-use App\Config\Database;
+namespace Models;
+use Config\Database;
 
 class Driver extends User {
     private $license_number;
