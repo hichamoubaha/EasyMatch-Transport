@@ -9,6 +9,7 @@ require_once __DIR__ . '/../models/Trip.php';
 require_once __DIR__ . '/../controllers/TripController.php';
 require_once __DIR__ . '/../controllers/AuthController.php';
 require_once __DIR__ . '/../controllers/DriverController.php';
+require_once __DIR__ . '/controllers/TrajetController.php';
 
 $database = new Database();
 $db = $database->getConnection();
@@ -24,6 +25,7 @@ $userId = $_GET['user_id'] ?? $_POST['user_id'] ?? 1;
 $tripController = new TripController($db);
 $auth = new AuthController;
 $driver = new DriverController;
+$trajetController = new TrajetController();
 
 try {
     switch ($action) {
@@ -136,6 +138,10 @@ try {
     case 'driver' : $driver->index();
     break;
     case 'updatedemande' : $driver->index();
+    break;
+    case 'showride' : $trajetController->index();
+    break;
+    case 'createTraject' : $trajetController->createTraject();
     break;
     
     }
