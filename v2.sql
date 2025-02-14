@@ -17,7 +17,6 @@ CREATE TABLE users (
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')) DEFAULT 'pending',
     date_bloque DATE,
     sexe VARCHAR CHECK (sexe in ('M', 'F'))
-    -----
 );
 
 -- CREATE TABLE admin (
@@ -80,6 +79,16 @@ CREATE TABLE demande_expediteur (
     note TEXT
 
 );
+
+ALTER TABLE demande_expediteur
+ADD COLUMN conducteur_id INT;
+
+ALTER TABLE demande_expediteur
+ADD CONSTRAINT fk_conducteur
+FOREIGN KEY (id)
+REFERENCES (id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 CREATE TABLE fragile_colier_reservé (
     id SERIAL PRIMARY KEY,

@@ -52,11 +52,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-                <a href="contact.html" class="nav-item nav-link">Login</a>
+                <a href="/" class="nav-item nav-link">Home</a>
+                <a href="/" class="nav-item nav-link">About</a>
+                <a href="/" class="nav-item nav-link">Services</a>
+                <a href="/" class="nav-item nav-link">Contact</a>
+                <?php if(isset($_SESSION['USER'])){ ?>
+                    <a href="?action=logout" class="nav-item nav-link">Logout</a>
+                <?php } else { 
+                    echo '<a href="?action=login" class="nav-item nav-link">Login</a>';
+                } ?>
             </div>
             
         </div>

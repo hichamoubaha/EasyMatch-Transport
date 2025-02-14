@@ -97,7 +97,7 @@ class User
     }
 
 
-    private function query($query,$data = []){
+    protected function query($query,$data = []){
         
         $stmt = $this->pdo->getConnection()->prepare($query);
         $check = $stmt->execute($data);
@@ -166,6 +166,7 @@ class User
 
     }
 
+
     public function getUser($data , $data_not = []){
 
         $keys = array_keys($data);
@@ -197,7 +198,7 @@ class User
         return $this->query($query);
     }
     
-    public function updateUser Status($id, $status) {
+    public function updateUserStatus($id, $status) {
         $query = "UPDATE users SET statut = :statut WHERE id = :id";
         $this->query($query, ['statut' => $status, 'id' => $id]);
     }

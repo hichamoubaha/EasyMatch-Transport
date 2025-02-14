@@ -1,76 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>Koulia</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link href="../public/images/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="../public/libs/animate/animate.min.css" rel="stylesheet">
-    <link href="../public/libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="../public/css/style.css" rel="stylesheet">
-    
-    <style>
-        .vertical-divider {
-            width: 1px;
-            height: 20px;
-            background-color: #0d6efd; /* Bootstrap primary color */
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
-        <a href="index" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
-            <h2 class="mb-2 text-white">Koulia</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-                <a href="contact.html" class="nav-item nav-link">Login</a>
-            </div>
-            
-        </div>
-    </nav>
-    <!-- Navbar End -->
-
+<?php require __DIR__."/components/header.php"; ?>
     <main class="container-fluid p-5">
+        <?php if(isset($_SESSION['USER'])){ ?>
         <!-- Dashboard Section -->
         <section class="row">
             <!-- Left Panel: User Requests Summary -->
@@ -123,7 +53,7 @@
                     <div class="card-body">
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h2 class="mb-0">Nom d'utilisateur</h2>
+                                <h2 class="mb-0"><?=$_SESSION['USER']->nom .' '.$_SESSION['USER']->prenom ;?></h2>
                                 <button id="modifier-profile-btn" class="btn btn-primary" style="border-radius: 10px;">Modifier le profil</button>
                             </div>
                         </div>
@@ -138,44 +68,61 @@
                                 <div class="tab-content" id="profileTabsContent">
                                     <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
                                         <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
+                                            <div class="col-sm-3 col-md-4 col-5">
                                                 <label class="fw-bold">Nom complet</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Jamshaid Kamran
+                                            <?=$_SESSION['USER']->nom .' '.$_SESSION['USER']->prenom ;?>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-4 col-5">
+                                                <label class="fw-bold">Email</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <?=$_SESSION['USER']->email;?> 
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-4 col-5">
+                                                <label class="fw-bold">Telephone</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                            <?=$_SESSION['USER']->phone;?>
                                             </div>
                                         </div>
                                         <hr />
 
                                         <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
+                                            <div class="col-sm-3 col-md-4 col-5">
                                                 <label class="fw-bold">Date de naissance</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                22 Mars 1994
+                                                <?=$_SESSION['USER']->date_naissance ;?>
                                             </div>
                                         </div>
                                         <hr />
 
                                         <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
-                                                <label class="fw-bold">Adresse</label>
+                                            <div class="col-sm-3 col-md-4 col-6">
+                                                <label class="fw-bold">Pays / Ville</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Casablanca, Rue Hassan 2, Résidence Andra
+                                            <?=$_SESSION['USER']->pays.' '.$_SESSION['USER']->ville ;?>
                                             </div>
                                         </div>
                                         <hr />
 
                                         <div class="row">
-                                            <div class="col-sm-3 col-md-2 col-5">
+                                            <div class="col-sm-3 col-md-4 col-5">
                                                 <label class="fw-bold">Matricule de voiture</label>
                                             </div>
                                             <div class="col-md-8 col-6">
                                                 A 122546
                                             </div>
                                         </div>
-                                        <hr />
                                     </div>
                                 </div>
                             </div>
@@ -198,43 +145,43 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Votre nom">
+                                        <input type="text" class="form-control" id="name" value="<?=$_SESSION['USER']->nom?>" placeholder="Votre nom">
                                         <label for="name">Nom</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="prenom" placeholder="Votre prénom">
+                                        <input type="text" class="form-control" id="prenom" value="<?=$_SESSION['USER']->prenom?>" placeholder="Votre prénom">
                                         <label for="prenom">Prénom</label>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Votre email">
+                                        <input type="email" class="form-control" id="email" value="<?=$_SESSION['USER']->email?>" placeholder="Votre email">
                                         <label for="email">Email</label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="telephone" placeholder="Téléphone">
+                                        <input type="text" class="form-control" id="telephone" value="<?=$_SESSION['USER']->phone?>" placeholder="Téléphone">
                                         <label for="telephone">Téléphone</label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="date-naissance" placeholder="Date de naissance">
+                                        <input type="text" class="form-control" id="date-naissance" value="<?=$_SESSION['USER']->date_naissance?>" placeholder="Date de naissance">
                                         <label for="date-naissance">Date de naissance</label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="pays" placeholder="Pays">
+                                        <input type="text" class="form-control" id="pays" value="<?=$_SESSION['USER']->pays?>" placeholder="Pays">
                                         <label for="pays">Pays</label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="ville" placeholder="Ville">
+                                        <input type="text" class="form-control" id="ville" value="<?=$_SESSION['USER']->ville?>" placeholder="Ville">
                                         <label for="ville">Ville</label>
                                     </div>
                                 </div>
@@ -248,6 +195,7 @@
                 </div>
             </div>
         </div>
+        <?php } ?>
     </main>
 
 

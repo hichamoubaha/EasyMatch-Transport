@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Point d'entrée de l'application
 define('ROOT_PATH', dirname(__DIR__));
 
@@ -7,15 +7,13 @@ require_once ROOT_PATH . '/config/Database.php';
 require_once ROOT_PATH . '/controllers/TripController.php';
 require_once ROOT_PATH. '/controllers/DriverController.php';
 require_once ROOT_PATH. '/controllers/UserController.php';
-require_once ROOT_PATH. '/controllers/LoginController.php';
-require_once ROOT_PATH. '/controllers/SignupController.php';
+require_once ROOT_PATH. '/controllers/AuthController.php';
 
 $action = $_GET['action'] ?? 'index';
 $id = $_GET['id'] ?? null;
 
 $controller = new TripController();
-$login = new LoginController();
-$signup = new SignupController();
+$auth = new AuthController();
 
 try {
     switch ($action) {
@@ -136,13 +134,19 @@ case 'admin/suspend':
 
 
 
-    case 'login' : $login->Login(); 
+    case 'login' : $auth->Login(); 
     break;
-    case 'showlogin' : $login->index();
+    case 'showlogin' : $auth->viewLogin();
     break;
-    case 'signup' : $signup->signup();
+    case 'signup' : $auth->signup();
     break;
-    case 'showsignup' : $signup->index();
+    case 'logout' : $auth->logout();
+    break;
+    case 'showsignup' : $auth->viewSignUp();
+    break;
+    case 'driver' : $driver->index();
+    break;
+    case 'updatedemande' : $driver->index();
     break;
     
     }
