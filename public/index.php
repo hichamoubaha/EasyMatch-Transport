@@ -8,6 +8,7 @@ require_once ROOT_PATH . '/controllers/TripController.php';
 require_once ROOT_PATH. '/controllers/DriverController.php';
 require_once ROOT_PATH. '/controllers/UserController.php';
 require_once ROOT_PATH. '/controllers/AuthController.php';
+require_once ROOT_PATH. '/controllers/AdminController.php';
 
 $action = $_GET['action'] ?? 'index';
 $id = $_GET['id'] ?? null;

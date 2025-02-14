@@ -20,12 +20,12 @@ class AdminController extends Controller
     }
 
     public function validateUser ($id) {
-        $this->userModel->updateUser Status($id, 'accepted'); // Method to update user status
+        $this->userModel->updateUserStatus($id, 'accepted'); // Method to update user status
         redirect('admin/dashboard'); // Redirect to dashboard
     }
 
     public function suspendUser ($id) {
-        $this->userModel->updateUser Status($id, 'blocked'); // Method to update user status
+        $this->userModel->updateUserStatus($id, 'blocked'); // Method to update user status
         redirect('admin/dashboard'); // Redirect to dashboard
     }
     public function getStatistics() {

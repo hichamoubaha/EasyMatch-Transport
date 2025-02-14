@@ -20,6 +20,6 @@ function escape($string)
 function redirect($path)
 {
 
-	header("Location: ". ROOT.$path);
+	header("Location: ".$path);
 
 }

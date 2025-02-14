@@ -108,20 +108,20 @@ class User
 
     public function validate($data){
 
-        if(isset($data['nom']) && isset($data['prenom']) && isset($data['post']) && isset($data['date-naissance'])){
+        if(isset($data['nom']) && isset($data['prenom']) && isset($data['post']) && isset($data['date_naissance'])){
             if(empty($data['nom'])){
-                $this->errors['firstname'] = 'First Name est obligatoire !';
+                $this->errors['firstname'] = 'Nom est obligatoire !';
             }
     
             if(empty($data['prenom'])){
-                $this->errors['lastname'] = 'Last Name est obligatoire !';
+                $this->errors['lastname'] = 'Prenom est obligatoire !';
             }
 
-            if(empty($data['role'])){
-                $this->errors['role'] = 'role est obligatoire';
+            if(empty($data['post'])){
+                $this->errors['post'] = 'role est obligatoire';
             }
     
-            if(empty($data['date-naissancec'])){
+            if(empty($data['date_naissance'])){
                 $this->errors['date-naissance'] = 'date de naissance est invalid';
             }
         }
@@ -137,7 +137,7 @@ class User
         }
 
         if(empty($data['password'])){
-            $this->errors['password'] = 'Password is obligatoire !';
+            $this->errors['password'] = 'Password est obligatoire !';
         }
 
         if(empty($this->errors)){
@@ -147,12 +147,11 @@ class User
         return false;
     }
 
+
     public function insertUser($data){
-
         $keys = array_keys($data);
-
+        $data['password'] = password_hash($data['password'],PASSWORD_BCRYPT);
         $query = "INSERT INTO public.users(". implode(",",$keys) .")" . " VALUES(:". implode(",:",$keys) .")";
-
         $this->query($query,$data);
 
     }
@@ -204,7 +203,8 @@ class User
         return $result[0];  
 
         return false;
-    }
+    }                                      
+
     public function getAllUsers() {
         $query = "SELECT * FROM users";
         return $this->query($query);
