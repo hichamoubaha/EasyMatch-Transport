@@ -1,41 +1,29 @@
 <?php
-namespace App\Models;
-
-use PDO;
-use App\core\Database;
-use App\core\Model;
-use IModelRepositorie;
+// require "../function/functions.php";
 
 class User
 {
-    use Model;
 
-    protected $table = 'users';
     private $id_user;
     private $nom;
     private $prenom;
     private $email;
     private $telephone;
     private $motdepass;
+    private $date_naissance;
+    private $role;
+    public $errors = [];
 
-    public function __contruct($id_user,$nom,$prenom,$email,$telephone,$motdepass)
+    private $pdo;
+    
+    public function __construct()
     {
-
-        $this->id_user = $id_user;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->email = $email;
-        $this->telephone = $telephone;
-        $this->motdepass = $motdepass;
-        $this->order_column = 'id_user';
+        $this->pdo = new Database();
     }
 
     //getters and setters
     public function getIdUser($id_user){
         return $this->id_user = $id_user;
-    }
-    public function setIdUser($id_user){
-        $this->id_user = $id_user;
     }
 
     public function getNom()
@@ -74,6 +62,24 @@ class User
         $this->telephone = $telephone;
     }
 
+    public function getDateNaissance()
+    {
+        return $this->date_naissance;
+    }
+    public function setDateNaissance($date_naissance)
+    {
+        $this->date_naissance = $date_naissance;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+
     public function getMotDePass(){
         return $this->motdepass;
     }
@@ -82,37 +88,97 @@ class User
     }
 
 
+    private function query($query,$data = []){
+        
+        $stmt = $this->pdo->getConnection()->prepare($query);
+        $check = $stmt->execute($data);
+
+        if($check){
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            if(is_array($result) && count($result)){
+                return $result;
+            }
+
+        }
+        else return false;
+
+    }
+
 
     public function validate($data){
 
-        if(isset($data['firstname']) && isset($data['lastname'])){
-            if(empty($data['firstname'])){
-                $this->errors['firstname'] = 'First Name is required !';
+        if(isset($data['nom']) && isset($data['prenom']) && isset($data['post']) && isset($data['date_naissance'])){
+            if(empty($data['nom'])){
+                $this->errors['firstname'] = 'Nom est obligatoire !';
             }
     
-            if(empty($data['lastname'])){
-                $this->errors['lastname'] = 'Last Name is required !';
+            if(empty($data['prenom'])){
+                $this->errors['lastname'] = 'Prenom est obligatoire !';
+            }
+
+            if(empty($data['post'])){
+                $this->errors['post'] = 'role est obligatoire';
+            }
+    
+            if(empty($data['date_naissance'])){
+                $this->errors['date-naissance'] = 'date de naissance est invalid';
             }
         }
 
         if(empty($data['email'])){
 
-            $this->errors['email'] = 'Email is required !';
+            $this->errors['email'] = 'Email est obligatoire !';
            
         }
         else if(!filter_var($data['email'],FILTER_VALIDATE_EMAIL)){
 
-            $this->errors['email'] = 'Email is invalid !';
+            $this->errors['email'] = 'Email est invalid !';
         }
 
         if(empty($data['password'])){
-            $this->errors['password'] = 'Password is required !';
+            $this->errors['password'] = 'Password est obligatoire !';
         }
 
         if(empty($this->errors)){
-
             return true;
         }
+
+        return false;
+    }
+
+
+    public function insertUser($data){
+        $keys = array_keys($data);
+        $data['password'] = password_hash($data['password'],PASSWORD_BCRYPT);
+        $query = "INSERT INTO public.users(". implode(",",$keys) .")" . " VALUES(:". implode(",:",$keys) .")";
+        $this->query($query,$data);
+
+    }
+
+    public function getUser($data , $data_not = []){
+
+        $keys = array_keys($data);
+        $keys_not = array_keys($data_not);
+
+        $query = "SELECT * FROM public.users WHERE ";
+        foreach($keys as $key){
+
+            $query .= $key ." = :" .$key . " && ";
+        }
+
+        foreach($keys_not as $key){
+
+            $query .= $key ." = :" .$key . " && ";
+        }
+
+        $query = rtrim($query, ' && ');
+
+        $data = array_merge($data , $data_not);
+        $result = $this->query($query ,$data);
+
+        if($result) 
+        return $result[0];
 
         return false;
     }

@@ -1,10 +1,14 @@
 <?php
-use App\Models\User;
+require __DIR__.'/../models/User.php';
 
 class SignupController extends Controller
 {
 
-    public function index()
+    public function index(){
+        require __DIR__.'/../views/Authentication/signup.view.php';
+    }
+
+    public function signup()
     {
         $data = [];
 
@@ -15,8 +19,8 @@ class SignupController extends Controller
 
             if($user->validate($_POST)){
 
-                $user->insert($_POST);
-                redirect('login');
+                $user->insertUser($_POST);
+                return $this->view('Authentication/login');
             }
 
             $errors = $user->errors;
@@ -24,7 +28,7 @@ class SignupController extends Controller
 
         }
 
-        return $this->view('signup',$data);
+        return $this->view('Authentication/signup',$data);
         
     }
 }
