@@ -106,20 +106,35 @@ $this->matriculeVehicule = $matriculeVehicule;
 }
 
 
+public function isAlreadyExist() {
+    $database = new Database();
+    $conn = $database->getConnection();
 
-public function isAleradyExist() {
+    $sql = "SELECT * FROM trajet WHERE driver_id = :driver_id AND point_depart = :point_depart 
+            AND point_arrivee = :point_arrivee AND date_depart = :date_depart AND date_darrivee = :date_darrivee 
+            AND typedevehicule = :typedevehicule AND capasitedevehicule = :capasitedevehicule 
+            AND matricule_vehicule = :matriculeVehicule";
 
-$database = new Database();
-$conn = $database->getConnection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        ':driver_id' => $this->driver_id,
+        ':point_depart' => $this->point_depart,
+        ':point_arrivee' => $this->point_arrivee,
+        ':date_depart' => $this->date_depart,
+        ':date_darrivee' => $this->date_darrivee,
+        ':typedevehicule' => $this->typedevehicule,
+        ':capasitedevehicule' => $this->capasitedevehicule,
+        ':matriculeVehicule' => $this->matriculeVehicule
+    ]);
 
-$sql = "SELECT * FROM trajet WHERE driver_id = :driver_id AND point_depart = :point_depart AND point_arrivee = :point_arrivee AND date_depart = :date_depart AND date_darrivee = :date_darrivee AND typedevehicule = :typedevehicule AND capasitedevehicule = :capasitedevehicule AND etapesintermédiaires = :etapesintermédiaires AND matricule_vehicule = :matriculeVehicule";
-
-
+    return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
 }
 
-
-
 public function AddRide() {
+
+    if ($this->isAlreadyExist()) {
+        return false;
+    }
         $database = new Database();
         $conn = $database->getConnection();
         
@@ -131,7 +146,7 @@ public function AddRide() {
                  :typedevehicule, :capasitedevehicule, :etapesintermédiaires, :matriculeVehicule)";
         
         $stmt = $conn->prepare($sql);
-        $stmt->execute([
+        $success =  $stmt->execute([
             ':driver_id' => $this->driver_id,
             ':point_depart' => $this->point_depart,
             ':point_arrivee' => $this->point_arrivee,
@@ -142,5 +157,9 @@ public function AddRide() {
             ':etapesintermédiaires' => $this->etapesintermédiaires,
             ':matriculeVehicule' => $this->matriculeVehicule
         ]);
+
+        if (!$success) {
+            var_dump($stmt->errorInfo());
+        }
     }
 }

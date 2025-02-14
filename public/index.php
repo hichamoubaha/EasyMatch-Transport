@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 // use Controllers\TrajetController;
 // Point d'entrée de l'application
 

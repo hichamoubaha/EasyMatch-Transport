@@ -19,8 +19,6 @@ class TrajetController extends Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (!empty($_POST)) {
                     echo "Données reçues avec succès !";
-
-                  var_dump($_POST);
                 }
 
                 
@@ -63,7 +61,7 @@ class TrajetController extends Controller {
             } catch (Exception $e) {
                 $_SESSION['error'] = $e->getMessage();
                
-                echo 'error';
+                var_dump($e->getMessage());
                 exit();
             }
         }
