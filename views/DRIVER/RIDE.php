@@ -310,6 +310,7 @@ require_once '../views/components/header.php';
     }
 
     // Form Submission
+    
     async function submitForm() {
     const start = document.getElementById('startLocation').value.split(',');
     const end = document.getElementById('endLocation').value.split(',');
