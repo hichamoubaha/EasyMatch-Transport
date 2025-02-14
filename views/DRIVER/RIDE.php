@@ -311,31 +311,47 @@ require_once '../views/components/header.php';
 
     // Form Submission
     async function submitForm() {
-        const start = document.getElementById('startLocation').value.split(',');
-        const end = document.getElementById('endLocation').value.split(',');
-        const capacity = document.getElementById('capacity').value;
+    const start = document.getElementById('startLocation').value.split(',');
+    const end = document.getElementById('endLocation').value.split(',');
+    const waypoints = waypointsArray.map(wp => wp.split(',').slice(0,2).join(',')); 
 
-        try {
-            const viaParam = waypointsArray.length > 0
-                ? `&via=${waypointsArray.map(wp => wp.split(',').slice(0,2).join(',')).join('|')}`
-                : '';
+    try {
+        let coordinates = [[start[0], start[1]], ...waypoints.map(wp => wp.split(',')), [end[0], end[1]]];
 
-            const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf624855b0dd27f56d47ffbf96889a9e421e7c&start=${start[0]},${start[1]}&end=${end[0]},${end[1]}${viaParam}`;
+        const url = "https://api.openrouteservice.org/v2/directions/driving-car/geojson";
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Authorization": "5b3ce3597851110001cf624855b0dd27f56d47ffbf96889a9e421e7c",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ coordinates })
+        });
 
-            const response = await fetch(url);
-            const data = await response.json();
-
-            if(data.features?.length > 0) {
-                const route = data.features[0].geometry.coordinates;
-                L.polyline(route.map(c => [c[1], c[0]]), { color: 'red' }).addTo(map);
-                map.fitBounds(L.latLngBounds(route.map(c => [c[1], c[0]])));
-                alert(' le Trajet creé avec succès !');
-            }
-        } catch (error) {
-            console.error('Erreur:', error);
-            alert('Erreur lors de la publication du trajet');
+        if (!response.ok) {
+            throw new Error("Erreur lors de la récupération de l'itinéraire");
         }
+
+        const data = await response.json();
+        drawRoute(data);
+    } catch (error) {
+        console.error("Erreur:", error);
     }
+}
+
+function drawRoute(data) {
+    if (window.routeLayer) {
+        map.removeLayer(window.routeLayer);
+    }
+    
+    window.routeLayer = L.geoJSON(data, {
+        style: { color: "blue", weight: 4 }
+    }).addTo(map);
+
+    const bounds = L.geoJSON(data).getBounds();
+    map.fitBounds(bounds);
+}
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
