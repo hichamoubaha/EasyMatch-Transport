@@ -41,6 +41,7 @@
         .notif{
             display: none;
         }
+        
     </style>
 </head>
 
@@ -270,6 +271,9 @@
                 </div>
             </div>
         </div>
+        <section>
+            
+        </section>
     </main>
 
 

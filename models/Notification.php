@@ -57,5 +57,7 @@ class Notification {
             die("Error retrieving user notifications: " . $error->getMessage());
         }
     }
+
+    
 }
 ?>

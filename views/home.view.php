@@ -52,7 +52,7 @@ https://templatemo.com/tm-588-ebook-landing
                         </div>
 
                         <div class="hero-image-wrap col-lg-6 col-12 mt-3 mt-lg-0">
-                            <img src="images/education-online-books.png" class="hero-image img-fluid" alt="education online books">
+                            <img src="../public/images/education-online-books.png" class="hero-image img-fluid" alt="education online books">
                         </div>
 
                     </div>
@@ -104,7 +104,7 @@ https://templatemo.com/tm-588-ebook-landing
                     <div class="row">
 
                         <div class="col-lg-6 col-12">
-                            <img src="images/tablet-screen-contents.jpg" class="img-fluid" alt="">
+                            <img src="../public/images/tablet-screen-contents.jpg" class="img-fluid" alt="">
                         </div>
 
                         <div class="col-lg-6 col-12">
@@ -136,7 +136,7 @@ https://templatemo.com/tm-588-ebook-landing
                         </div>
 
                         <div class="col-lg-6 col-12">
-                            <img src="images/tablet-screen-contents.jpg" class="img-fluid" alt="">
+                            <img src="../public/images/tablet-screen-contents.jpg" class="img-fluid" alt="">
                         </div>
 
                         <button class=""><a href="#section_2" class="mt-4 btn custom-btn smoothscroll ">Start Earning Today!</a></button>
