@@ -60,11 +60,20 @@
                                 <strong>Taille des colis:</strong> 
                                 <?php echo htmlspecialchars($reservation['size_colier']); ?>
                             </p>
-                            <?php if ($reservation['fragile'] === 'oui'): ?>
-                                <p>
-                                    <strong>Colis fragiles:</strong> 
-                                    <?php echo htmlspecialchars($reservation['nbr_colier_fragile']); ?>
-                                </p>
+                            <?php if ($reservation['fragile'] === 'oui'): 
+                                $fragileDetails = $this->tripModel->getFragileDetails($reservation['id']);
+                            ?>
+                                <div class="fragile-details">
+                                    <p><strong>Détails des colis fragiles:</strong></p>
+                                    <ul>
+                                        <?php foreach ($fragileDetails as $detail): ?>
+                                            <li>
+                                                <?php echo htmlspecialchars($detail['nbr_colier_fragile']); ?> 
+                                                colis de taille <?php echo htmlspecialchars($detail['size_colier']); ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
                             <?php endif; ?>
                         </div>
                     </div>

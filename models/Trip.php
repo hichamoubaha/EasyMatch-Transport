@@ -3,12 +3,17 @@ class Trip {
     private $conn;
     private $table = 'trajet';
     private $reservationTable = 'reservation';
+    private $fragileTable = 'fragile_colier_reserve';
 
     public function __construct($db) {
         $this->conn = $db;
     }
 
     public function getAllTrips() {
+        if (!$this->conn) {
+            throw new Exception("La connexion à la base de données n'est pas établie.");
+        }
+        
         $query = 'SELECT 
                     t.*,
                     u.nom as conducteur_nom,
@@ -23,6 +28,10 @@ class Trip {
     }
 
     public function getTripById($tripId) {
+        if (!$this->conn) {
+            throw new Exception("La connexion à la base de données n'est pas établie.");
+        }
+        
         $query = 'SELECT 
                     t.*,
                     u.nom as conducteur_nom,
@@ -57,12 +66,14 @@ class Trip {
         try {
             $this->conn->beginTransaction();
 
+            // Insertion dans la table reservation
             $query = "INSERT INTO " . $this->reservationTable . " 
                     (expediteur_id, id_projet, fragile, fragile_colier_reserve, 
                      size_colier, nbr_colier_fragile, date_reservation) 
                     VALUES 
                     (:expediteur_id, :id_projet, :fragile, :fragile_colier_reserve, 
-                     :size_colier, :nbr_colier_fragile, CURRENT_TIMESTAMP)";
+                     :size_colier, :nbr_colier_fragile, CURRENT_TIMESTAMP)
+                    RETURNING id";
 
             $stmt = $this->conn->prepare($query);
 
@@ -74,6 +85,26 @@ class Trip {
             $stmt->bindParam(':nbr_colier_fragile', $data['nbr_colier_fragile']);
 
             $stmt->execute();
+            $reservationId = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+
+            // Si des colis fragiles sont présents, les insérer dans la table fragile_colier_reserve
+            if ($data['fragile'] === 'oui' && !empty($data['fragile_details'])) {
+                $fragileQuery = "INSERT INTO " . $this->fragileTable . "
+                               (demande_id, size_colier, nbr_colier_fragile)
+                               VALUES
+                               (:demande_id, :size_colier, :nbr_colier_fragile)";
+
+                $fragileStmt = $this->conn->prepare($fragileQuery);
+
+                foreach ($data['fragile_details'] as $detail) {
+                    if ($detail['quantity'] > 0) {
+                        $fragileStmt->bindParam(':demande_id', $reservationId);
+                        $fragileStmt->bindParam(':size_colier', $detail['size']);
+                        $fragileStmt->bindParam(':nbr_colier_fragile', $detail['quantity']);
+                        $fragileStmt->execute();
+                    }
+                }
+            }
 
             $this->conn->commit();
             return true;
@@ -94,6 +125,18 @@ class Trip {
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getFragileDetails($reservationId) {
+        $query = "SELECT * FROM " . $this->fragileTable . "
+                 WHERE demande_id = :demande_id
+                 ORDER BY id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':demande_id', $reservationId);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

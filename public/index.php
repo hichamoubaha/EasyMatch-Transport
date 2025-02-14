@@ -17,7 +17,7 @@ if (!$db) {
 
 $action = $_GET['action'] ?? ($_POST['action'] ?? 'index');
 $tripId = $_GET['id'] ?? null;
-$userId = $_GET['user_id'] ?? $_POST['user_id'] ?? 1; // Définir une valeur par défaut si non fournie
+$userId = $_GET['user_id'] ?? $_POST['user_id'] ?? 1;
 
 $tripController = new TripController($db);
 
@@ -53,3 +53,4 @@ try {
     header("Location: index.php?user_id=" . $userId);
     exit();
 }
+?>

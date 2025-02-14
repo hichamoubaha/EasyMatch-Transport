@@ -17,6 +17,15 @@
                 <?php endif; ?>
             </a>
         </div>
+
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <div class="alert alert-danger">
+                <?php 
+                echo htmlspecialchars($_SESSION['error_message']);
+                unset($_SESSION['error_message']);
+                ?>
+            </div>
+        <?php endif; ?>
         
         <div class="trip-card">
             <div class="trip-header">
@@ -77,7 +86,9 @@
             </div>
         </div>
         
-        <a href="index.php?action=showtrajet&user_id=<?php echo htmlspecialchars($userId); ?>" class="btn-back">Retour à la liste des trajets</a>
+        <a href="index.php?action=showtrajet&user_id=<?php echo htmlspecialchars($userId); ?>" class="btn-back">
+            Retour à la liste des trajets
+        </a>
     </div>
 
     <!-- Modal de réservation -->
@@ -90,6 +101,7 @@
                 <input type="hidden" name="trip_id" value="<?php echo htmlspecialchars($trip['id']); ?>">
                 <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($userId); ?>">
                 
+                <h3>Colis standards</h3>
                 <?php
                 $sizeColis = explode(',', $trip['size_colis']);
                 foreach ($sizeColis as $size): 
@@ -123,14 +135,35 @@
                     </select>
                 </div>
 
-                <div class="form-group" id="nbr_colier_fragile_group" style="display: none;">
-                    <label for="nbr_colier_fragile">Nombre de colis fragiles :</label>
-                    <input type="number" 
-                           id="nbr_colier_fragile" 
-                           name="nbr_colier_fragile" 
-                           min="0" 
-                           value="0"
-                           class="form-control">
+                <div id="fragile_colis_section" style="display: none;">
+                    <h3>Colis fragiles</h3>
+                    <div class="form-group">
+                        <label for="fragile_colis_G">Nombre de colis fragiles G:</label>
+                        <input type="number" 
+                               id="fragile_colis_G" 
+                               name="fragile_colis[G]" 
+                               min="0" 
+                               value="0"
+                               class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="fragile_colis_M">Nombre de colis fragiles M:</label>
+                        <input type="number" 
+                               id="fragile_colis_M" 
+                               name="fragile_colis[M]" 
+                               min="0" 
+                               value="0"
+                               class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="fragile_colis_P">Nombre de colis fragiles P:</label>
+                        <input type="number" 
+                               id="fragile_colis_P" 
+                               name="fragile_colis[P]" 
+                               min="0" 
+                               value="0"
+                               class="form-control">
+                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -146,7 +179,7 @@
         var btn = document.getElementById("openReservationModal");
         var span = document.getElementsByClassName("close")[0];
         var fragileSelect = document.getElementById('fragile_admit');
-        var nbrFragileGroup = document.getElementById('nbr_colier_fragile_group');
+        var fragileColis = document.getElementById('fragile_colis_section');
 
         btn.onclick = function() {
             modal.style.display = "block";
@@ -163,9 +196,11 @@
         }
 
         fragileSelect.addEventListener('change', function() {
-            nbrFragileGroup.style.display = this.value === 'oui' ? 'block' : 'none';
+            fragileColis.style.display = this.value === 'oui' ? 'block' : 'none';
             if (this.value === 'non') {
-                document.getElementById('nbr_colier_fragile').value = '0';
+                document.querySelectorAll('#fragile_colis_section input[type="number"]').forEach(function(input) {
+                    input.value = '0';
+                });
             }
         });
 
@@ -184,13 +219,20 @@
             }
 
             if (fragileSelect.value === 'oui') {
-                var nbrFragile = parseInt(document.getElementById('nbr_colier_fragile').value) || 0;
-                if (nbrFragile === 0) {
+                var totalFragile = 0;
+                var fragileInputs = document.querySelectorAll('#fragile_colis_section input[type="number"]');
+                
+                fragileInputs.forEach(function(input) {
+                    totalFragile += parseInt(input.value) || 0;
+                });
+
+                if (totalFragile === 0) {
                     e.preventDefault();
-                    alert('Veuillez spécifier le nombre de colis fragiles.');
+                    alert('Veuillez spécifier au moins un colis fragile.');
                     return false;
                 }
-                if (nbrFragile > totalColis) {
+
+                if (totalFragile > totalColis) {
                     e.preventDefault();
                     alert('Le nombre de colis fragiles ne peut pas être supérieur au nombre total de colis.');
                     return false;

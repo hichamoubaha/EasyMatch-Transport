@@ -49,8 +49,10 @@ class TripController {
             }
 
             $fragile = filter_input(INPUT_POST, 'fragile_admit', FILTER_SANITIZE_STRING);
-            $nbrColierFragile = filter_input(INPUT_POST, 'nbr_colier_fragile', FILTER_VALIDATE_INT) ?? 0;
+            $nbrColierFragile = 0;
+            $fragileDetails = [];
             
+            // Traitement des colis normaux
             $colis = $_POST['colis'] ?? [];
             $sizeColier = '';
             foreach ($colis as $size => $quantity) {
@@ -63,13 +65,33 @@ class TripController {
                 throw new Exception("Veuillez sélectionner au moins un colis");
             }
 
+            // Traitement des colis fragiles
+            if ($fragile === 'oui') {
+                $fragileColis = $_POST['fragile_colis'] ?? [];
+                foreach ($fragileColis as $size => $quantity) {
+                    $quantity = intval($quantity);
+                    if ($quantity > 0) {
+                        $nbrColierFragile += $quantity;
+                        $fragileDetails[] = [
+                            'size' => $size,
+                            'quantity' => $quantity
+                        ];
+                    }
+                }
+
+                if ($nbrColierFragile === 0) {
+                    throw new Exception("Veuillez sélectionner au moins un colis fragile");
+                }
+            }
+
             $reservationData = [
                 'expediteur_id' => $userId,
                 'id_projet' => $tripId,
                 'fragile' => $fragile,
                 'fragile_colier_reserve' => $nbrColierFragile,
                 'size_colier' => $sizeColier,
-                'nbr_colier_fragile' => $nbrColierFragile
+                'nbr_colier_fragile' => $nbrColierFragile,
+                'fragile_details' => $fragileDetails
             ];
 
             if ($this->tripModel->reserveTrip($reservationData)) {
@@ -89,6 +111,8 @@ class TripController {
         try {
             $reservations = $this->tripModel->getUserReservations($userId);
             $cartCount = $this->tripModel->getCartCount($userId);
+            
+            // Pass the tripModel to the view
             require_once __DIR__ . '/../views/trips/cart.php';
         } catch (Exception $e) {
             $_SESSION['error_message'] = "Erreur lors du chargement du panier : " . $e->getMessage();
@@ -96,3 +120,4 @@ class TripController {
         }
     }
 }
+?>

@@ -1,6 +1,13 @@
 CREATE DATABASE koulia;
 
 
+CREATE TABLE fragile_colier_reserve (
+    id SERIAL PRIMARY KEY,
+    demande_id INTEGER REFERENCES reservation(id),
+    size_colier TEXT NOT NULL,
+    nbr_colier_fragile INTEGER NOT NULL
+);
+
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
