@@ -46,6 +46,94 @@ try {
         default:
             $tripController->index($userId);
             break;
+
+        
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    case 'login' : $auth->Login(); 
+    break;
+    case 'showlogin' : $auth->viewLogin();
+    break;
+    case 'signup' : $auth->signup();
+    break;
+    case 'logout' : $auth->logout();
+    break;
+    case 'showsignup' : $auth->viewSignUp();
+    break;
+    case 'driver' : $driver->index();
+    break;
+    case 'updatedemande' : $driver->index();
+    break;
+    
     }
 } catch (Exception $e) {
     $_SESSION['error_message'] = $e->getMessage();

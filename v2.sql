@@ -1,6 +1,6 @@
-CREATE DATABASE easymatch_transport;
+CREATE DATABASE koulia;
 
-\c easymatch_transport;
+\c koulia;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -14,10 +14,14 @@ CREATE TABLE users (
     matricule VARCHAR(100) UNIQUE,
     pays VARCHAR(100),
     ville VARCHAR(100),
-    statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')),
+    statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')) DEFAULT 'pending',
     date_bloque DATE,
+<<<<<<< HEAD
     sexe VARCHAR CHECK (post in ('M', 'F))
     
+=======
+    sexe VARCHAR CHECK (sexe in ('M', 'F'))
+>>>>>>> origin/abdelkarim
 );
 
 select id , nom , prenom , sexe 
@@ -69,6 +73,7 @@ CREATE TABLE trajet (
     date_limite_offre DATE,
     trajet_itineraire TEXT,
     type_vehicule VARCHAR(100),
+    description TEXT,
     fragile_admit VARCHAR CHECK (fragile_admit in ('oui', 'non')),        
     matricule_vehicule VARCHAR(100),
     size_colis VARCHAR(50),
@@ -87,6 +92,16 @@ CREATE TABLE demande_expediteur (
 
 );
 
+ALTER TABLE demande_expediteur
+ADD COLUMN conducteur_id INT;
+
+ALTER TABLE demande_expediteur
+ADD CONSTRAINT fk_conducteur
+FOREIGN KEY (id)
+REFERENCES (id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
 CREATE TABLE fragile_colier_reservé (
     id SERIAL PRIMARY KEY,
     demande_id INT REFERENCES demande_expediteur(id) ON DELETE CASCADE,
@@ -96,3 +111,4 @@ CREATE TABLE fragile_colier_reservé (
 
 ALTER TABLE users
 ADD COLUMN sexe VARCHAR(1) CHECK (sexe IN ('M', 'F'));
+    

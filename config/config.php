@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 // Fichier: config/config.php
 
 // Configuration de la base de données
@@ -24,3 +25,12 @@ ini_set('display_errors', 1);
 
 // Fuseau horaire
 date_default_timezone_set('Europe/Paris');
+=======
+if($_SERVER['SERVER_NAME'] == 'localhost'){
+    define('ROOT','http://localhost/EasyMatch-Transport/public/');
+    define('SERVERNAME','localhost');
+    define('DBNAME','');
+    define('USERNAME','');
+    define('PASSWORD','');
+}
+>>>>>>> origin/abdelkarim
