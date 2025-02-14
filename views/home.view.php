@@ -24,6 +24,19 @@
 
         <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="../public/libs/animate/animate.min.css" rel="stylesheet">
+    <link href="../public/libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+    <!-- Template Stylesheet -->
+    <link href="../public/css/style.css" rel="stylesheet">
+
+    <link href="../public/css/templatemo-ebook-landing.css" rel="stylesheet">
+
 <!--
 
 TemplateMo 588 ebook landing
@@ -34,6 +47,40 @@ https://templatemo.com/tm-588-ebook-landing
     </head>
     
     <body>
+
+         <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
+        <a href="index" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+            <h2 class="mb-2 text-white">Koulia</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="/" class="nav-item nav-link">Home</a>
+                <a href="/" class="nav-item nav-link">About</a>
+                <a href="/" class="nav-item nav-link">Services</a>
+                <a href="/" class="nav-item nav-link">Contact</a>
+                <?php if(isset($_SESSION['USER'])){ ?>
+                    <a href="?action=logout" class="nav-item nav-link">Logout</a>
+                <?php } else { 
+                    echo '<a href="?action=login" class="nav-item nav-link">Login</a>';
+                } ?>
+            </div>
+            
+        </div>
+    </nav>
+    <!-- Navbar End -->
 
         <main>
             <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">

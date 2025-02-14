@@ -29,6 +29,14 @@
 
     <!-- Template Stylesheet -->
     <link href="../public/css/style.css" rel="stylesheet">
+
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="../public/css/bootstrap-icons.css" rel="stylesheet">
+
+<link href="../public/css/templatemo-ebook-landing.css" rel="stylesheet">
+
+<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     
 </head>
 
