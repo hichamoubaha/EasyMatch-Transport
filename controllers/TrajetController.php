@@ -12,10 +12,9 @@ require_once __DIR__ . "/Controller.php";
 
 class TrajetController extends Controller {
     
-    public function index() {
-        return$this->view('Authentication/login');
+    public function index(){
+        require __DIR__.'/../views/DRIVER/RIDE.php';
     }
-
     public function createTraject() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (!empty($_POST)) {

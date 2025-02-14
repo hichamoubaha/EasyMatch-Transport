@@ -99,11 +99,6 @@ try {
          case 'createTraject':
             $trajetController->createTraject();
             break;
-
-          case 'trajet':
-            $trajetController->index();
-            break;
-
             case 'login' : $auth->Login();
             break;
             case 'showlogin' : $auth->viewLogin();
@@ -112,7 +107,7 @@ try {
             break;
             case 'showsignup' : $auth->viewSignUp();
             break;
-            case 'driver' : $driver->index();
+            case 'driver' : $trajetController->index();
             break;
     }
 } catch (Exception $e) {

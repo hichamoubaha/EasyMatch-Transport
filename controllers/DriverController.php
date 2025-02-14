@@ -14,10 +14,4 @@ class DriverController extends Controller
         $announcements = $driver->getDriverAnnonce();
         $this->view('driver', ['announcements' => $announcements]);
     }
-
-
-
-
-
-
 }
