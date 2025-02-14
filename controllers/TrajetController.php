@@ -52,8 +52,11 @@ class TrajetController extends Controller {
                 $trajet->setEtapesintermédiaires($etapesintermediaires);
                 $trajet->setMatriculeVehicule($matriculeVehicule);
 
+                var_dump($trajet);
+
                 if ($trajet->AddRide()) {
-                    header("Location: " . ROOT . "success-page");
+                    $_SESSION['success'] = "Trajet enregistré avec succès.";
+                    header('Location: /driver');
                     exit();
                 } else {
                     throw new Exception("Erreur lors de l'enregistrement du trajet.");

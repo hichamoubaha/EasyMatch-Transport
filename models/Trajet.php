@@ -132,9 +132,9 @@ public function isAlreadyExist() {
 
 public function AddRide() {
 
-    if ($this->isAlreadyExist()) {
-        return false;
-    }
+    // if ($this->isAlreadyExist()) {
+    //     return false;
+    // }
         $database = new Database();
         $conn = $database->getConnection();
         

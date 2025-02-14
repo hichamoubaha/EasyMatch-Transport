@@ -45,8 +45,8 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <p><strong>Route:</strong> <?= htmlspecialchars($driver['departure']) ?> → <?= htmlspecialchars($driver['destination']) ?></p>
-                    <p><strong>Vehicle Capacity:</strong> <?= htmlspecialchars($driver['capacity']) ?>m³ (Max <?= htmlspecialchars($driver['max_weight']) ?>kg)</p>
+                    <p><strong>Route:</strong> <?= htmlspecialchars($driver['point_depart']) ?> → <?= htmlspecialchars($driver['trajet_itineraire']) ?> → <?= htmlspecialchars($driver['point_destination']) ?></p>
+                    <p><strong>Vehicle Capacity:</strong> <?= htmlspecialchars($driver['capacity']) ?>m³ (Max <?= htmlspecialchars($driver['size_colis']) ?>kg)</p>
                     <button class="btn btn-primary w-100" onclick="showRoute()">View Route</button>
                 </div>
                 <div id="map" class="mt-3"></div>
