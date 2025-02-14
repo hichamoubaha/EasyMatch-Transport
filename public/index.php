@@ -54,6 +54,40 @@ try {
         default:
             $tripController->index($userId);
             break;
+            // Add these cases in the switch statement
+case 'admin/dashboard':
+    $adminController = new AdminController();
+    $adminController->index();
+    break;
+case 'admin/validate':
+    $adminController->validateUser ($id);
+    break;
+case 'admin/suspend':
+    $adminController->suspendUser ($id);
+    break;
+    case 'admin/offers':
+        $adminOfferController = new AdminOfferController();
+        $adminOfferController->index();
+        break;
+    case 'admin/accept':
+        $adminOfferController->acceptOffer($id);
+        break;
+    case 'admin/refuse':
+        $adminOfferController->refuseOffer($id);
+        break;
+        case 'admin/transactions':
+            $transactionController = new TransactionController();
+            $transactionController->index();
+            break;
+            case 'admin/avis':
+                $adminAvisController = new AdminAvisController();
+                $adminAvisController->index();
+                break;
+                case 'admin/statistics':
+                    $adminController = new AdminController();
+                    $statistics = $adminController->getStatistics();
+                    require ROOT_PATH . '/views/admin/statistics.view.php';
+                    break;
 
 
 

@@ -43,7 +43,7 @@ class AuthController extends Controller
                         }
 
                         else if($dbuser->post === 'admin'){
-                            redirect('dashboard');
+                            header("Location: ?action=admin/dashboard");
                         }
         
                     }

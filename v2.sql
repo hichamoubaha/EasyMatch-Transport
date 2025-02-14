@@ -125,6 +125,5 @@ CREATE TABLE fragile_colier_reservé (
     nbr_colier_fragile INT
 );
 
-ALTER TABLE users
-ADD COLUMN sexe VARCHAR(1) CHECK (sexe IN ('M', 'F'));
-    
+
+ALTER TABLE trajet ADD COLUMN statut VARCHAR CHECK (statut IN ('pending', 'accepted', 'refused')) DEFAULT 'pending';

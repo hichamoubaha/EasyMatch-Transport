@@ -149,9 +149,19 @@ class User {
         $result = $this->query($query ,$data);
 
         if($result) 
-        return $result[0];
+        return $result[0];  
 
         return false;
+    }                                      
+
+    public function getAllUsers() {
+        $query = "SELECT * FROM users";
+        return $this->query($query);
+    }
+    
+    public function updateUserStatus($id, $status) {
+        $query = "UPDATE users SET statut = :statut WHERE id = :id";
+        $this->query($query, ['statut' => $status, 'id' => $id]);
     }
 
     public function validate($data) {
