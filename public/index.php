@@ -10,7 +10,7 @@ require_once __DIR__ . '/../models/Trip.php';
 require_once __DIR__ . '/../controllers/TripController.php';
 require_once __DIR__ . '/../controllers/AuthController.php';
 require_once __DIR__ . '/../controllers/DriverController.php';
-require_once __DIR__ . '/controllers/TrajetController.php';
+require_once  ROOT_PATH . '/controllers/TrajetController.php';
 
 $database = new Database();
 $db = $database->getConnection();
