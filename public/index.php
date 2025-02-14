@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Point d'entrée de l'application
 define('ROOT_PATH', dirname(__DIR__));
 
@@ -106,6 +106,8 @@ try {
     case 'showlogin' : $auth->viewLogin();
     break;
     case 'signup' : $auth->signup();
+    break;
+    case 'logout' : $auth->logout();
     break;
     case 'showsignup' : $auth->viewSignUp();
     break;

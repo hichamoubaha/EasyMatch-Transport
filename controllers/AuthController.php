@@ -34,16 +34,16 @@ class AuthController extends Controller
 
                         $_SESSION['USER'] = $dbuser;
                         
-                        if($dbuser->post === 'expediteur'){
-                            redirect('sender');
-                        }
-                        else if($dbuser->post === 'conducteur'){
-                            redirect('driver');
-                        }
+                        // if($dbuser->post === 'expediteur'){
+                        //     redirect('sender');
+                        // }
+                        // else if($dbuser->post === 'conducteur'){
+                        //     redirect('driver');
+                        // }
 
-                        else if($dbuser->post === 'admin'){
-                            redirect('dashboard');
-                        }
+                        // else if($dbuser->post === 'admin'){
+                        //     redirect('dashboard');
+                        // }
         
                     }
                 }
@@ -79,5 +79,12 @@ class AuthController extends Controller
 
         return $this->view('Authentication/signup',$data);
         
+    }
+
+    public function logout(){
+        unset($_SESSION);
+        session_destroy();
+
+        redirect('home');
     }
 }

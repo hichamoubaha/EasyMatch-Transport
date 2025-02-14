@@ -16,8 +16,7 @@ CREATE TABLE users (
     ville VARCHAR(100),
     statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')) DEFAULT 'pending',
     date_bloque DATE,
-    sexe VARCHAR CHECK (post in ('M', 'F'))
-    -----
+    sexe VARCHAR CHECK (sexe in ('M', 'F'))
 );
 
 -- CREATE TABLE admin (
