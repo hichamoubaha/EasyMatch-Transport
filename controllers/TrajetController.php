@@ -15,8 +15,11 @@ class TrajetController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (!empty($_POST)) {
                     echo "Données reçues avec succès !";
-                    var_dump($_POST);
+
+                  var_dump($_POST);
                 }
+
+                
             try {
                 $requiredFields = ['driver_id', 'point_depart', 'point_arrivee', 'date_depart', 'date_darrivee', 'typedevehicule', 'capasitedevehicule', 'matriculeVehicule'];
                 

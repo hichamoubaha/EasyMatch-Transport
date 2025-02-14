@@ -51,7 +51,7 @@
     </style>
 </head>
 <body class="bg-light">
-
+<form id="transportForm" method="POST" action="http://localhost/EasyMatch-Transport/public/index.php?action=createTraject">
 <div class="container mt-5">
     <input type="hidden" name="driver_id" value="<?php echo htmlspecialchars($user_id); ?>">  
         
@@ -74,8 +74,8 @@
         <div class="step-content" id="step2">
             <h5 class="mb-4">Ajoutez des étapes intermédiaires</h5>
             <div class="input-group mb-3">
-                <select id="waypointSelector" name="etapesintermédiaires" class="form-select">
-                    <option value="">Choisir une ville...</option>
+                <select id="waypointSelector"  class="form-select">
+                    <option name="etapesintermédiaires" value="">Choisir une ville...</option>
                 </select>
                 <button type="button" class="btn btn-success" onclick="addWaypoint()">+ Ajouter</button>
             </div>
@@ -99,7 +99,6 @@
         </div>
 
        <!-- Step 4: Confirmation -->
-       <form id="transportForm" method="POST" action="http://localhost/EasyMatch-Transport/public/index.php?action=createTraject">
 
 <div class="step-content" id="step4">
     <h5 class="mb-4">Détails du trajet</h5>
