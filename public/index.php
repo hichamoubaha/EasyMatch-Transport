@@ -4,6 +4,7 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+<<<<<<< HEAD
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/Database.php';
 require_once __DIR__ . '/../models/Trip.php';
@@ -11,6 +12,17 @@ require_once __DIR__ . '/../controllers/TripController.php';
 require_once __DIR__ . '/../controllers/AuthController.php';
 require_once __DIR__ . '/../controllers/DriverController.php';
 require_once  ROOT_PATH . '/controllers/TrajetController.php';
+=======
+require_once ROOT_PATH . '/config/Database.php';
+require_once ROOT_PATH . '/controllers/TripController.php';
+require_once ROOT_PATH. '/controllers/DriverController.php';
+require_once ROOT_PATH. '/controllers/UserController.php';
+require_once ROOT_PATH. '/controllers/AuthController.php';
+require_once ROOT_PATH. '/controllers/AdminController.php';
+require_once ROOT_PATH. '/controllers/AdminOfferController.php';
+require_once ROOT_PATH. '/controllers/AdminAvisController.php';
+require_once ROOT_PATH. '/controllers/TransactionController.php';
+>>>>>>> origin/hicham
 
 $database = new Database();
 $db = $database->getConnection();
