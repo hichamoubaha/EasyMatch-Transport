@@ -1,8 +1,8 @@
 {
-    "name": "ycode/easy-match-transport",
+    "name": "youco/easy-match-transport",
     "autoload": {
         "psr-4": {
-            "Ycode\\EasyMatchTransport\\": "EasyMatchTransport/"
+            "Youco\\EasyMatchTransport\\": "easy-match-transport/"
         }
     },
     "require": {}

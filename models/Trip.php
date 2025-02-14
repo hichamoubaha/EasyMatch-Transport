@@ -1,4 +1,5 @@
 <?php
+
 class Trip {
     private $conn;
     private $table = 'trajet';

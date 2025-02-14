@@ -1,4 +1,19 @@
 
+<?php
+
+
+$user_id = $_SESSION['USER']->id;
+
+// var_dump($user_id);
+
+
+require_once '../views/components/header.php';
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -51,9 +66,10 @@
     </style>
 </head>
 <body class="bg-light">
-
+<form id="transportForm" method="POST" action="http://localhost/EasyMatch-Transport/public/index.php?action=createTraject">
 <div class="container mt-5">
-    <form  action="/controllers/" method="POST" class="card p-4 shadow">
+    <input type="hidden" name="driver_id" value="<?php echo htmlspecialchars($user_id); ?>">  
+        
         <!-- Stepper Header -->
         <div class="stepper">
             <div class="step active" data-step="1">📍 Départ</div>
@@ -65,7 +81,7 @@
         <!-- Step 1: Départ -->
         <div class="step-content active" id="step1">
             <h5 class="mb-4">Sélectionnez le point de départ</h5>
-            <select id="startLocation" class="form-select mb-3" required></select>
+            <select id="startLocation" name="point_depart" class="form-select mb-3" required></select>
             <button class="btn btn-primary w-100" onclick="nextStep(2)">Suivant →</button>
         </div>
 
@@ -73,8 +89,8 @@
         <div class="step-content" id="step2">
             <h5 class="mb-4">Ajoutez des étapes intermédiaires</h5>
             <div class="input-group mb-3">
-                <select id="waypointSelector" class="form-select">
-                    <option value="">Choisir une ville...</option>
+                <select id="waypointSelector"  class="form-select">
+                    <option name="etapesintermédiaires" value="">Choisir une ville...</option>
                 </select>
                 <button type="button" class="btn btn-success" onclick="addWaypoint()">+ Ajouter</button>
             </div>
@@ -90,7 +106,7 @@
         <!-- Step 3: Destination -->
         <div class="step-content" id="step3">
             <h5 class="mb-4">Sélectionnez la destination finale</h5>
-            <select id="endLocation" class="form-select mb-3" required></select>
+            <select id="endLocation" name="point_arrivee" class="form-select mb-3" required></select>
             <div class="d-flex justify-content-between">
                 <button class="btn btn-secondary" onclick="prevStep()">← Précédent</button>
                 <button class="btn btn-primary" onclick="nextStep(4)">Suivant →</button>
@@ -98,6 +114,7 @@
         </div>
 
        <!-- Step 4: Confirmation -->
+
 <div class="step-content" id="step4">
     <h5 class="mb-4">Détails du trajet</h5>
     
@@ -106,7 +123,7 @@
         <!-- Capacity -->
         <div class="col-md-6">
             <label class="form-label">🚗 Capacité du véhicule</label>
-            <select id="capacity" class="form-select" required>
+            <select id="capacity" class="form-select" name="capasitedevehicule" required>
                 <option value="1m³">1m³ (Petit colis)</option>
                 <option value="3m³">3m³ (Moyen)</option>
                 <option value="5m³">5m³ (Grand volume)</option>
@@ -116,7 +133,7 @@
         <!-- Vehicle Type -->
         <div class="col-md-6">
             <label class="form-label" for="vehicule">Type de véhicule</label>
-            <select class="form-select" id="vehicule" name="vehicule" required>
+            <select class="form-select" id="vehicule" name="typedevehicule" required>
                 <option value="">Sélectionner</option>
                 <option value="pickup">Pick-up</option>
                 <option value="camion-frigo">Camion Frigorifique</option>
@@ -137,12 +154,12 @@
 
         <div class="col-md-6">
             <label class="form-label" for="dateFin">Date de debut de l'annonce</label>
-            <input class="form-control" type="date" id="dateFin" name="dateFin" required>
+            <input class="form-control" type="date" id="dateFin" name="date_depart" required>
         </div>
         <!-- End Date -->
         <div class="col-md-6">
             <label class="form-label" for="dateFin">Date de fin de l'annonce</label>
-            <input class="form-control" type="date" id="dateFin" name="dateFin" required>
+            <input class="form-control" type="date" id="dateFin" name="date_darrivee" required>
         </div>
 
         <!-- Fragile Option -->
@@ -161,15 +178,19 @@
             <div id="routeSummary" class="mb-4"></div>
             <div id="map"></div>
 
-            <button type="submit" class="btn btn-success mt-4" onclick="submitForm()">🚀 voir le route</button>
+            <button type="button" class="btn btn-success mt-4" onclick="submitForm()">🚀 voir le route</button>
 
             <div class="d-flex justify-content-between mt-4">
                 <button class="btn btn-secondary" onclick="prevStep()">← Précédent</button>
-                <button type="submit" class="btn btn-success">🚀 Publier le trajet</button>
-            </div>
+                <button type="submit" class="btn btn-success" id="publishButton">🚀 Publier l'annonce</button>
+                </div>
         </div>
     </form>
 </div>
+
+
+
+<?php  require_once '../views/components/footer.php' ;  ?>
 
 <script>
     let currentStep = 1;
@@ -186,7 +207,7 @@
 
     async function loadCities() {
         try {
-            const response = await fetch("cities.json");
+            const response = await fetch("/EasyMatch-Transport/views/DRIVER/cities.json");
             cities = await response.json();
 
             // Fill selects
@@ -222,6 +243,10 @@
             updateRouteSummary();
         }
     }
+    document.getElementById("publishButton").addEventListener("click", function(event) {
+    console.log("Bouton cliqué !");
+});
+
 
     function prevStep() {
         currentStep--;
@@ -304,7 +329,7 @@
                 const route = data.features[0].geometry.coordinates;
                 L.polyline(route.map(c => [c[1], c[0]]), { color: 'red' }).addTo(map);
                 map.fitBounds(L.latLngBounds(route.map(c => [c[1], c[0]])));
-                alert('Trajet publié avec succès !');
+                alert(' le Trajet creé avec succès !');
             }
         } catch (error) {
             console.error('Erreur:', error);

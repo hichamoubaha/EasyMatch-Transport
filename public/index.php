@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -27,6 +28,7 @@ $auth = new AuthController;
 $driver = new DriverController;
 $trajetController = new TrajetController();
 
+$trajetController = new TrajetController();
 try {
     switch ($action) {
         case 'index':
@@ -53,10 +55,6 @@ try {
             $tripController->index($userId);
             break;
 
-        
-        
-
-        
 
 
 
@@ -130,8 +128,6 @@ try {
     case 'showlogin' : $auth->viewLogin();
     break;
     case 'signup' : $auth->signup();
-    break;
-    case 'logout' : $auth->logout();
     break;
     case 'showsignup' : $auth->viewSignUp();
     break;
