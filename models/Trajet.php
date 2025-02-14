@@ -110,14 +110,14 @@ public function isAlreadyExist() {
     $database = new Database();
     $conn = $database->getConnection();
 
-    $sql = "SELECT * FROM trajet WHERE driver_id = :driver_id AND point_depart = :point_depart 
+    $sql = "SELECT * FROM trajet WHERE conducteur_id = :conducteur_id AND point_depart = :point_depart 
             AND point_arrivee = :point_arrivee AND date_depart = :date_depart AND date_darrivee = :date_darrivee 
             AND typedevehicule = :typedevehicule AND capasitedevehicule = :capasitedevehicule 
             AND matricule_vehicule = :matriculeVehicule";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute([
-        ':driver_id' => $this->driver_id,
+        ':conducteur_id' => $this->driver_id,
         ':point_depart' => $this->point_depart,
         ':point_arrivee' => $this->point_arrivee,
         ':date_depart' => $this->date_depart,
@@ -139,17 +139,17 @@ public function AddRide() {
         $conn = $database->getConnection();
         
         $sql = "INSERT INTO trajet 
-                (driver_id, point_depart, point_arrivee, date_depart, date_darrivee, 
-                 typedevehicule, capasitedevehicule, etapesintermédiaires, matricule_vehicule)
+                (conducteur_id, point_depart, point_destination, date_offre, date_limite_offre, 
+                 type_vehicule, capasitedevehicule, trajet_itineraire, matricule_vehicule)
                 VALUES 
-                (:driver_id, :point_depart, :point_arrivee, :date_depart, :date_darrivee, 
+                (:conducteur_id, :point_depart, :point_destination, :date_depart, :date_darrivee, 
                  :typedevehicule, :capasitedevehicule, :etapesintermédiaires, :matriculeVehicule)";
         
         $stmt = $conn->prepare($sql);
         $success =  $stmt->execute([
-            ':driver_id' => $this->driver_id,
+            ':conducteur_id' => $this->driver_id,
             ':point_depart' => $this->point_depart,
-            ':point_arrivee' => $this->point_arrivee,
+            ':point_destination' => $this->point_arrivee,
             ':date_depart' => $this->date_depart,
             ':date_darrivee' => $this->date_darrivee,
             ':typedevehicule' => $this->typedevehicule,
