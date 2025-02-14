@@ -45,7 +45,7 @@ function sendNotification($email, $status) {
 }
 
 
-$userEmail = 'utilisateur@example.com';  
+$userEmail = '';  
 $demandeStatus = 'accepted';  
 
 sendNotification($userEmail, $demandeStatus);

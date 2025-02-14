@@ -14,9 +14,9 @@ CREATE TABLE users (
     matricule VARCHAR(100) UNIQUE,
     pays VARCHAR(100),
     ville VARCHAR(100),
-    statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')),
+    statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')) DEFAULT 'pending',
     date_bloque DATE,
-    sex VARCHAR CHECK (post in ('M', 'F'))
+    sexe VARCHAR CHECK (post in ('M', 'F'))
     -----
 );
 
@@ -91,3 +91,4 @@ CREATE TABLE fragile_colier_reservé (
 
 ALTER TABLE users
 ADD COLUMN sexe VARCHAR(1) CHECK (sexe IN ('M', 'F'));
+    
