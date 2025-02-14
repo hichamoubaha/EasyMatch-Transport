@@ -1,649 +1,380 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-    <meta charset="utf-8">
-    <title>Logistica - Shipping Company Website Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-    <!-- Favicon -->
-    <link href="<?=ROOT?>images/favicon.ico" rel="icon">
+        <title>ebook landing page template</title>
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="<?=ROOT?>libs/animate/animate.min.css" rel="stylesheet">
-    <link href="<?=ROOT?>libs/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../public/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?=ROOT?>css/bootstrap.min.css" rel="stylesheet">
+        <link href="../public/css/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="<?=ROOT?>css/style.css" rel="stylesheet">
-</head>
+        <link href="../public/css/templatemo-ebook-landing.css" rel="stylesheet">
 
-<body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 
+<!--
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
-        <a href="index" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
-            <h2 class="mb-2 text-white">Logistica</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-up m-0">
-                        <a href="price.html" class="dropdown-item">Pricing Plan</a>
-                        <a href="feature.html" class="dropdown-item">Features</a>
-                        <a href="quote.html" class="dropdown-item">Free Quote</a>
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
+TemplateMo 588 ebook landing
+
+https://templatemo.com/tm-588-ebook-landing
+
+-->
+    </head>
+    
+    <body>
+
+        <main>
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12 mb-5 pb-5 pb-lg-0 mb-lg-0">
+
+                            <h1 class="">🚀 Ship Smarter, Earn on the Go!</h1>
+
+                            <h6 class="text-white mb-4">Find trusted drivers to ship your package anywhere in the world 🌍 or earn money while traveling!</h6>
+
+                            <a href="#section_2" class="btn custom-btn smoothscroll me-3">Become a Driver</a>
+
+                            <a href="#section_3" class="link link--kale smoothscroll">Ship Your Package</a>
+                        </div>
+
+                        <div class="hero-image-wrap col-lg-6 col-12 mt-3 mt-lg-0">
+                            <img src="images/education-online-books.png" class="hero-image img-fluid" alt="education online books">
+                        </div>
+
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i>+012 345 6789</h4>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+            </section>
 
 
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0 pb-5">
-        <div class="owl-carousel header-carousel position-relative mb-5">
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="<?=ROOT?>images/carousel-1.jpg" alt="">
-                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-10 col-lg-8">
-                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport & Logistics Solution</h5>
-                                <h1 class="display-3 text-white animated slideInDown mb-4">#1 Place For Your <span class="text-primary">Logistics</span> Solution</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Free Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="<?=ROOT?>images/carousel-2.jpg" alt="">
-                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(6, 3, 21, .5);">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-10 col-lg-8">
-                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Transport & Logistics Solution</h5>
-                                <h1 class="display-3 text-white animated slideInDown mb-4">#1 Place For Your <span class="text-primary">Transport</span> Solution</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea elitr.</p>
-                                <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Free Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Carousel End -->
+            <section class="featured-section bg-red-400">
+                <div class="container">
+                    <div class="row">
 
+                        <div class="col-lg-8 col-12">
+                            <div class="avatar-group d-flex flex-wrap align-items-center">
+                                <img src="../public/images/avatar/portrait-beautiful-young-woman-standing-grey-wall.jpg" class="img-fluid avatar-image" alt="">
 
-    <!-- About Start -->
-    <div class="container-fluid overflow-hidden py-5 px-lg-0">
-        <div class="container about py-5 px-lg-0">
-            <div class="row g-5 mx-lg-0">
-                <div class="col-lg-6 ps-lg-0 wow fadeInLeft" data-wow-delay="0.1s" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src="<?=ROOT?>images/about.jpg" style="object-fit: cover;" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 about-text wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="text-secondary text-uppercase mb-3">About Us</h6>
-                    <h1 class="mb-5">Quick Transport and Logistics Solutions</h1>
-                    <p class="mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    <div class="row g-4 mb-5">
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
-                            <i class="fa fa-globe fa-3x text-primary mb-3"></i>
-                            <h5>Global Coverage</h5>
-                            <p class="m-0">Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
-                            <i class="fa fa-shipping-fast fa-3x text-primary mb-3"></i>
-                            <h5>On Time Delivery</h5>
-                            <p class="m-0">Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam justo.</p>
-                        </div>
-                    </div>
-                    <a href="" class="btn btn-primary py-3 px-5">Explore More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
+                                <img src="../public/images/avatar/portrait-young-redhead-bearded-male.jpg" class="img-fluid avatar-image avatar-image-left" alt="">
 
+                                <img src="../public/images/avatar/pretty-blonde-woman.jpg" class="img-fluid avatar-image avatar-image-left" alt="">
 
-    <!-- Fact Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="text-secondary text-uppercase mb-3">Some Facts</h6>
-                    <h1 class="mb-5">#1 Place To Manage All Of Your Shipments</h1>
-                    <p class="mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    <div class="d-flex align-items-center">
-                        <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
-                        <div class="ps-4">
-                            <h6>Call for any query!</h6>
-                            <h3 class="text-primary m-0">+012 345 6789</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row g-4 align-items-center">
-                        <div class="col-sm-6">
-                            <div class="bg-primary p-4 mb-4 wow fadeIn" data-wow-delay="0.3s">
-                                <i class="fa fa-users fa-2x text-white mb-3"></i>
-                                <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
-                                <p class="text-white mb-0">Happy Clients</p>
-                            </div>
-                            <div class="bg-secondary p-4 wow fadeIn" data-wow-delay="0.5s">
-                                <i class="fa fa-ship fa-2x text-white mb-3"></i>
-                                <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
-                                <p class="text-white mb-0">Complete Shipments</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="bg-success p-4 wow fadeIn" data-wow-delay="0.7s">
-                                <i class="fa fa-star fa-2x text-white mb-3"></i>
-                                <h2 class="text-white mb-2" data-toggle="counter-up">1234</h2>
-                                <p class="text-white mb-0">Customer Reviews</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Fact End -->
+                                <img src="../public/images/avatar/studio-portrait-emotional-happy-funny-smiling-boyfriend.jpg" class="img-fluid avatar-image avatar-image-left" alt="">
 
+                                <div class="reviews-group mt-3 mt-lg-0">
+                                    <strong>4.5</strong>
 
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-secondary text-uppercase">Our Services</h6>
-                <h1 class="mb-5">Explore Our Services</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/service-1.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Air Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/service-2.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Ocean Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/service-3.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Road Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/service-4.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Train Freight</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/service-5.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Customs Clearance</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/service-6.jpg" alt="">
-                        </div>
-                        <h4 class="mb-3">Warehouse Solutions</h4>
-                        <p>Stet stet justo dolor sed duo. Ut clita sea sit ipsum diam lorem diam.</p>
-                        <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span>Read More</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
+                                    <i class="bi-star-fill"></i>
+                                    <i class="bi-star-fill"></i>
+                                    <i class="bi-star-fill"></i>
+                                    <i class="bi-star-fill"></i>
+                                    <i class="bi-star"></i>
 
-
-    <!-- Feature Start -->
-    <div class="container-fluid overflow-hidden py-5 px-lg-0">
-        <div class="container feature py-5 px-lg-0">
-            <div class="row g-5 mx-lg-0">
-                <div class="col-lg-6 feature-text wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="text-secondary text-uppercase mb-3">Our Features</h6>
-                    <h1 class="mb-5">We Are Trusted Logistics Company Since 1990</h1>
-                    <div class="d-flex mb-5 wow fadeInUp" data-wow-delay="0.3s">
-                        <i class="fa fa-globe text-primary fa-3x flex-shrink-0"></i>
-                        <div class="ms-4">
-                            <h5>Worldwide Service</h5>
-                            <p class="mb-0">Diam dolor ipsum sit amet eos erat ipsum lorem sed stet lorem sit clita duo justo magna erat amet</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-5 wow fadeIn" data-wow-delay="0.5s">
-                        <i class="fa fa-shipping-fast text-primary fa-3x flex-shrink-0"></i>
-                        <div class="ms-4">
-                            <h5>On Time Delivery</h5>
-                            <p class="mb-0">Diam dolor ipsum sit amet eos erat ipsum lorem sed stet lorem sit clita duo justo magna erat amet</p>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-0 wow fadeInUp" data-wow-delay="0.7s">
-                        <i class="fa fa-headphones text-primary fa-3x flex-shrink-0"></i>
-                        <div class="ms-4">
-                            <h5>24/7 Telephone Support</h5>
-                            <p class="mb-0">Diam dolor ipsum sit amet eos erat ipsum lorem sed stet lorem sit clita duo justo magna erat amet</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 pe-lg-0 wow fadeInRight" data-wow-delay="0.1s" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute img-fluid w-100 h-100" src="<?=ROOT?>images/feature.jpg" style="object-fit: cover;" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Feature End -->
-
-
-    <!-- Pricing Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-secondary text-uppercase">Pricing Plan</h6>
-                <h1 class="mb-5">Perfect Pricing Plan</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="price-item">
-                        <div class="border-bottom p-4 mb-4">
-                            <h5 class="text-primary mb-1">Basic Plan</h5>
-                            <h1 class="display-5 mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                        </div>
-                        <div class="p-4 pt-0">
-                            <p><i class="fa fa-check text-success me-3"></i>HTML5 & CSS3</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Bootstrap v5</p>
-                            <p><i class="fa fa-check text-success me-3"></i>FontAwesome Icons</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Responsive Layout</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Cross-browser Support</p>
-                            <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span >Order Now</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="price-item">
-                        <div class="border-bottom p-4 mb-4">
-                            <h5 class="text-primary mb-1">Standard Plan</h5>
-                            <h1 class="display-5 mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>99.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                        </div>
-                        <div class="p-4 pt-0">
-                            <p><i class="fa fa-check text-success me-3"></i>HTML5 & CSS3</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Bootstrap v5</p>
-                            <p><i class="fa fa-check text-success me-3"></i>FontAwesome Icons</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Responsive Layout</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Cross-browser Support</p>
-                            <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span >Order Now</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="price-item">
-                        <div class="border-bottom p-4 mb-4">
-                            <h5 class="text-primary mb-1">Advanced Plan</h5>
-                            <h1 class="display-5 mb-0">
-                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>149.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                        </div>
-                        <div class="p-4 pt-0">
-                            <p><i class="fa fa-check text-success me-3"></i>HTML5 & CSS3</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Bootstrap v5</p>
-                            <p><i class="fa fa-check text-success me-3"></i>FontAwesome Icons</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Responsive Layout</p>
-                            <p><i class="fa fa-check text-success me-3"></i>Cross-browser Support</p>
-                            <a class="btn-slide mt-2" href=""><i class="fa fa-arrow-right"></i><span >Order Now</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Pricing End -->
-
-
-    <!-- Quote Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="text-secondary text-uppercase mb-3">Get A Quote</h6>
-                    <h1 class="mb-5">Request A Free Qoute!</h1>
-                    <p class="mb-5">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo erat amet</p>
-                    <div class="d-flex align-items-center">
-                        <i class="fa fa-headphones fa-2x flex-shrink-0 bg-primary p-3 text-white"></i>
-                        <div class="ps-4">
-                            <h6>Call for any query!</h6>
-                            <h3 class="text-primary m-0">+012 345 6789</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="bg-light text-center p-5 wow fadeIn" data-wow-delay="0.5s">
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Select A Freight</option>
-                                        <option value="1">Freight 1</option>
-                                        <option value="2">Freight 2</option>
-                                        <option value="3">Freight 3</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Special Note"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                                    <small class="ms-3">2,564 reviews</small>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Quote End -->
-
-
-    <!-- Team Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="text-secondary text-uppercase">Our Team</h6>
-                <h1 class="mb-5">Expert Team Members</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/team-1.jpg" alt="">
-                        </div>
-                        <h5 class="mb-0">Full Name</h5>
-                        <p>Designation</p>
-                        <div class="btn-slide mt-1">
-                            <i class="fa fa-share"></i>
-                            <span>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/team-2.jpg" alt="">
-                        </div>
-                        <h5 class="mb-0">Full Name</h5>
-                        <p>Designation</p>
-                        <div class="btn-slide mt-1">
-                            <i class="fa fa-share"></i>
-                            <span>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/team-3.jpg" alt="">
-                        </div>
-                        <h5 class="mb-0">Full Name</h5>
-                        <p>Designation</p>
-                        <div class="btn-slide mt-1">
-                            <i class="fa fa-share"></i>
-                            <span>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.9s">
-                    <div class="team-item p-4">
-                        <div class="overflow-hidden mb-4">
-                            <img class="img-fluid" src="<?=ROOT?>images/team-4.jpg" alt="">
-                        </div>
-                        <h5 class="mb-0">Full Name</h5>
-                        <p>Designation</p>
-                        <div class="btn-slide mt-1">
-                            <i class="fa fa-share"></i>
-                            <span>
-                                <a href=""><i class="fab fa-facebook-f"></i></a>
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Team End -->
+            </section>
 
 
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="text-center">
-                <h6 class="text-secondary text-uppercase">Testimonial</h6>
-                <h1 class="mb-0">Our Clients Say!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="<?=ROOT?>images/testimonial-1.jpg" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
+            <section class="mt-36">
+                <div class="col-lg-12 col-12 text-center ">
+                    <h1 class="text-9xl">Why Choose colia?</h1>
+                </div>
+            </section>
+
+
+            <section class="book-section " id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+                            <img src="images/tablet-screen-contents.jpg" class="img-fluid" alt="">
                         </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="book-section-info">     
+                                <h1 class="mb-4 text-orange-300">For Senders📦</h1>
+                                <p>✅ Find a Driver Anytime, Anywhere – Ship your package anywhere in the world effortlessly.</p>
+                                <p>✅ All Sizes Accepted – Small, medium, or big, we handle them all.</p>
+                                <p>✅ Secure Shipments – Verified drivers ensure safe delivery.</p>
+                                <p>✅ Sensitive Package Protection – Special "Sensitive" badge for fragile items.</p>
+                            </div>
                         </div>
+                        <button class=""><a href="#section_2" class="mt-4 btn custom-btn smoothscroll ">Send Your Package Now!</a></button>
                     </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
                 </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
+            </section>
+
+            <section class="book-section mt-16" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+                            <div class="book-section-info">     
+                                <h1 class="mb-4 text-orange-300">🚗 For Drivers</h1>
+                                <p>✅ No Empty Trips – Maximize your vehicle’s space.</p>
+                                <p>✅ Choose Your Packages – Transport what fits your route and capacity.</p>
+                                <p>✅ Earn Extra Income – Get paid while traveling.</p>
+                                <p>✅ Verified & Secure – Safe transactions between drivers and senders.</p>
+                            </div>
                         </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-                <div class="testimonial-item p-4 my-5">
-                    <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
-                    <div class="d-flex align-items-end mb-4">
-                        <img class="img-fluid flex-shrink-0" src="img/testimonial-4.jpg" style="width: 80px; height: 80px;">
-                        <div class="ms-4">
-                            <h5 class="mb-1">Client Name</h5>
-                            <p class="m-0">Profession</p>
+
+                        <div class="col-lg-6 col-12">
+                            <img src="images/tablet-screen-contents.jpg" class="img-fluid" alt="">
                         </div>
-                    </div>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
 
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <button class=""><a href="#section_2" class="mt-4 btn custom-btn smoothscroll ">Start Earning Today!</a></button>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Services</h4>
-                    <a class="btn btn-link" href="">Air Freight</a>
-                    <a class="btn btn-link" href="">Sea Freight</a>
-                    <a class="btn btn-link" href="">Road Freight</a>
-                    <a class="btn btn-link" href="">Logistic Solutions</a>
-                    <a class="btn btn-link" href="">Industry solutions</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Quick Links</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-light mb-4">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+            </section>
+
+
+            <section class="mt-36">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center ">
+                            <h6>tutorial</h6>
+                            <h2 class="mb-5 ">deliver a package</h2>
+                        </div>
+
+                        <div class="col-lg-4 col-12">
+                            <nav id="navbar-example3" class="h-100 flex-column align-items-stretch">
+                                <nav class="nav nav-pills flex-column">
+                                    <a class="nav-link smoothscroll" href="#item-1">first step</a>
+
+                                    <a class="nav-link smoothscroll" href="#item-2"><strong>pack your package</strong></a>
+
+                                    <a class="nav-link smoothscroll" href="#item-3"><strong>choose your driver</strong></a>
+
+                                    <a class="nav-link smoothscroll" href="#item-4"><strong>send a demande</strong></a>
+
+                                    <a class="nav-link smoothscroll" href="#item-5"><strong>after delevering</strong></a>
+                                </nav>
+                            </nav>
+                        </div>
+
+                        <div class="col-lg-8 col-12">
+                            <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+                                <div class="scrollspy-example-item" id="item-1">
+                                    <h5>first step</h5>
+
+                                    <p class="">Visit the nearest delivery agency and request one of our boxes. We offer a variety of sizes :</p>
+
+                                    <div class="flex flex-row justify-between mt-16 mb-16">
+                                        <div class="w-3/12">
+                                            <p class="place-self-center">small</p>
+                                            <img src="" class=" h-46 bg-red-500" alt="">
+                                        </div>
+                                        <div class="w-3/12">
+                                            <p class="place-self-center">medium</p>
+                                            <img src="" class=" h-46 bg-red-500" alt="">
+                                        </div>
+                                        <div class="w-3/12">
+                                            <p class="place-self-center">large</p>  
+                                            <img src="" class=" h-46 bg-red-500" alt="">
+                                        </div>
+                                    </div>
+
+                                    <p class="">When you take the box make sure to take a "sesitive" badge with it </p>
+                                </div>
+
+                                <div class="scrollspy-example-item" id="item-2">
+                                    <h5>pack your package</h5>
+
+                                    <p>Carefully pack your items into the box, ensuring they are well-protected and secure. Once packed, take the box to the nearest delivery agency for shipping. </p>
+
+                                    <div class="row">
+                                        <div class="col-lg-6 col-12 mb-3">
+                                            <img src="../public/images/portrait-mature-smiling-authoress-sitting-desk.jpg" class="scrollspy-example-item-image img-fluid" alt="">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12 mb-3">
+                                            <img src="../public/images/businessman-sitting-by-table-cafe.jpg" class="scrollspy-example-item-image img-fluid" alt="">
+                                        </div>
+                                    </div>
+
+                                    <p>For packages containing fragile, valuable, or sensitive items, it’s important to attach the provided "Sensitive" badge to the box. This badge alerts the driver to handle your package with extra care</p>
+                                </div>
+
+                                <div class="scrollspy-example-item" id="item-3">
+                                    <h5>choose your driver</h5>
+
+                                    <p>Credit goes to <a rel="nofollow" href="https://freepik.com" target="_blank">FreePik</a> for images used in this ebook landing page template. You may browse FreePik to download more free images for your website.</p>
+                                    <p>This is a second paragraph. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+
+                                    <p>Lorem ipsum dolor sit amet, consive adipisicing elit, sed do eiusmod. tempor incididunt ut labore.</p>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-6 col-12">
+                                            <img src="images/tablet-screen-contents.jpg" class="img-fluid" alt="">
+                                        </div>
+
+                                        <div class="col-lg-6 col-12">
+                                            <p>Modern ebook ever</p>
+
+                                            <p><strong>Lorem ipsum dolor sit amet, consive adipisicing elit, sed do eiusmod. tempor incididunt.</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="scrollspy-example-item" id="item-4">
+                                    <h5>send a demande</h5>
+
+                                    <p>Select the most suitable driver for your package and send them a request with all the necessary details.</p>
+
+                                    <p>The driver will receive your request, review the package details, and then decide whether to accept or reject it based on their availability and preferences.</p>
+
+                                    <img src="../public/images/portrait-mature-smiling-authoress-sitting-desk.jpg" class="scrollspy-example-item-image img-fluid mb-3" alt="">
+
+                                </div>
+
+                                <div class="scrollspy-example-item" id="item-5">
+                                    <h5>after delevering</h5>
+
+                                    <p>Once the driver confirms and completes your delivery, you’ll have the opportunity to share your experience by leaving feedback. </p>
+
+                                    <p>Your feedback helps us improve our services and ensures that we maintain high standards for our drivers.</p>
+
+                                    <blockquote class="blockquote">Whether it’s a compliment or a suggestion, we value your input and use it to enhance the overall delivery experience for everyone.</blockquote>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                        </br>Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+            </section>
+
+
+   
+
+
+                
+            <section class="reviews-section section-padding" id="section_4">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center mb-5">
+                            <h6>Reviews</h6>
+
+                            <h2>What people saying...</h2>
+                        </div>
+
+                        <div class="col-lg-4 col-12">
+                            <div class="custom-block d-flex flex-wrap">
+                                <div class="custom-block-image-wrap d-flex flex-column">
+                                    <img src="../public/images/avatar/portrait-beautiful-young-woman-standing-grey-wall.jpg" class="img-fluid avatar-image" alt="">
+
+                                    <div class="text-center mt-3">
+                                        <span class="text-white">Sandy</span>
+
+                                        <strong class="d-block text-white">shipper</strong>
+                                    </div>
+                                </div>
+
+                                <div class="custom-block-info">
+                                    <div class="reviews-group mb-3">
+                                        <strong>4.5</strong>
+
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star"></i>
+                                    </div>
+
+                                    <p class="mb-0">Fast and reliable! The shipping process was smooth, and my order was delivered exactly as promised. Highly recommend!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-12 my-5 my-lg-0">
+                            <div class="custom-block d-flex flex-wrap">
+                                <div class="custom-block-image-wrap d-flex flex-column">
+                                    <img src="../public/images/avatar/portrait-young-redhead-bearded-male.jpg" class="img-fluid avatar-image avatar-image-left" alt="">
+
+                                    <div class="text-center mt-3">
+                                        <span class="text-white">John</span>
+
+                                        <strong class="d-block text-white">driver</strong>
+                                    </div>
+                                </div>
+
+                                <div class="custom-block-info">
+                                    <div class="reviews-group mb-3">
+                                        <strong>3.5</strong>
+
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star"></i>
+                                        <i class="bi-star"></i>
+                                    </div>
+
+                                    <p class="mb-0">Great experience! My shipment arrived earlier than expected, and the tracking updates were very helpful. Will order again!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-12">
+                            <div class="custom-block d-flex flex-wrap">
+                                <div class="custom-block-image-wrap d-flex flex-column">
+                                    <img src="../public/images/avatar/pretty-blonde-woman.jpg" class="img-fluid avatar-image" alt="">
+
+                                    <div class="text-center mt-3">
+                                        <span class="text-white">Candy</span>
+
+                                        <strong class="d-block text-white">VP, Design</strong>
+                                    </div>
+                                </div>
+
+                                <div class="custom-block-info">
+                                    <div class="reviews-group mb-3">
+                                        <strong>5</strong>
+
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                        <i class="bi-star-fill"></i>
+                                    </div>
+
+                                    <p class="mb-0">Excellent service! My package arrived on time and in perfect condition. I will definitely use this company again.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+            </section>
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
+        </main>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?=ROOT?>libs/wow/wow.min.js"></script>
-    <script src="<?=ROOT?>libs/easing/easing.min.js"></script>
-    <script src="<?=ROOT?>libs/waypoints/waypoints.min.js"></script>
-    <script src="<?=ROOT?>libs/counterup/counterup.min.js"></script>
-    <script src="<?=ROOT?>libs/owlcarousel/owl.carousel.min.js"></script>
+        <!-- JAVASCRIPT FILES -->
+        <script src="../public/js/jquery.min.js"></script>
+        <script src="../public/js/bootstrap.bundle.min.js"></script>
+        <script src="../public/js/jquery.sticky.js"></script>
+        <script src="../public/js/click-scroll.js"></script>
+        <script src="../public/js/custom.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="<?=ROOT?>js/main.js"></script>
-</body>
-
+    </body>
 </html>

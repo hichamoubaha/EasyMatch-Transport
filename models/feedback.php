@@ -1,13 +1,10 @@
 <?php
 class Avis {
-    private $message;
-    private $note;
+
     private $db;
 
 
-    public function __construct($message, $note, $db) {
-        $this->message = $message;
-        $this->note = $note;
+    public function __construct($db) {
         $this->db = $db;
     }
 
@@ -33,7 +30,7 @@ class Avis {
     }
 
     // Function to send feedback to a user
-    public function sendFeedback($sender, $receiver, $trajet) {
+    public function sendFeedback($sender, $receiver, $trajet, $message, $note) {
         try {
             $sql = "INSERT INTO avis (expediteur, destinataire, trajet, message, note) 
             VALUES (:sender, :receiver, :trajet, :message, :note)";
@@ -41,8 +38,8 @@ class Avis {
             $query->bindParam(':sender', $sender, PDO::PARAM_INT);
             $query->bindParam(':receiver', $receiver, PDO::PARAM_INT);
             $query->bindParam(':trajet', $trajet, PDO::PARAM_INT);
-            $query->bindParam(':message', $this->message, PDO::PARAM_STR);
-            $query->bindParam(':note', $this->note, PDO::PARAM_INT);
+            $query->bindParam(':message', $message, PDO::PARAM_STR);
+            $query->bindParam(':note', $note, PDO::PARAM_INT);
             $query->execute();
         } catch (PDOException $error) {
             die("Error in sending feedback function : " . $error->getMessage());
