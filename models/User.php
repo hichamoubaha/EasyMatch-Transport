@@ -2,7 +2,7 @@
 namespace App\Models;
 
 use PDO;
-use App\core\Database;
+use App\Config\Database;
 
 class User
 {
@@ -33,8 +33,8 @@ class User
     }
 
     //getters and setters
-    public function getIdUser($id_user){
-        return $this->id_user = $id_user;
+    public function getIdUser(){
+        return $this->id_user;
     }
     public function setIdUser($id_user){
         $this->id_user = $id_user;

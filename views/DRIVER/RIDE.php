@@ -53,7 +53,6 @@
 <body class="bg-light">
 
 <div class="container mt-5">
-    <form  action="?action=createTraject" method="POST" class="card p-4 shadow">
     <input type="hidden" name="driver_id" value="<?php echo htmlspecialchars($user_id); ?>">  
         
         <!-- Stepper Header -->
@@ -100,6 +99,8 @@
         </div>
 
        <!-- Step 4: Confirmation -->
+       <form id="transportForm" method="POST" action="http://localhost/EasyMatch-Transport/public/index.php?action=createTraject">
+
 <div class="step-content" id="step4">
     <h5 class="mb-4">Détails du trajet</h5>
     
@@ -163,12 +164,12 @@
             <div id="routeSummary" class="mb-4"></div>
             <div id="map"></div>
 
-            <button class="btn btn-success mt-4" onclick="submitForm()">🚀 voir le route</button>
+            <button type="button" class="btn btn-success mt-4" onclick="submitForm()">🚀 voir le route</button>
 
             <div class="d-flex justify-content-between mt-4">
                 <button class="btn btn-secondary" onclick="prevStep()">← Précédent</button>
-                <button type="submit" class="btn btn-success"> Publier la  annonce</button>
-            </div>
+                <button type="submit" class="btn btn-success" id="publishButton">🚀 Publier l'annonce</button>
+                </div>
         </div>
     </form>
 </div>
@@ -188,7 +189,7 @@
 
     async function loadCities() {
         try {
-            const response = await fetch("cities.json");
+            const response = await fetch("/EasyMatch-Transport/views/DRIVER/cities.json");
             cities = await response.json();
 
             // Fill selects
@@ -224,6 +225,10 @@
             updateRouteSummary();
         }
     }
+    document.getElementById("publishButton").addEventListener("click", function(event) {
+    console.log("Bouton cliqué !");
+});
+
 
     function prevStep() {
         currentStep--;

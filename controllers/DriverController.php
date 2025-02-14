@@ -1,9 +1,23 @@
 <?php
 require_once __DIR__."/Controller.php";
 
+use App\Models\Driver;
+
 class DriverController extends Controller
 {
     public function index(){
-        $this->view('driver');
     }
+
+    public function getDriverAnnouncements($id){
+        $driver = new Driver();
+        $driver->setIdUser($id);
+        $announcements = $driver->getDriverAnnonce();
+        $this->view('driver', ['announcements' => $announcements]);
+    }
+
+
+
+
+
+
 }

@@ -27,21 +27,26 @@ private $etapesintermédiaires;
 private $matriculeVehicule;
 
 
-public function __construct($driver_id, $point_depart, $point_arrivee, $date_depart, $date_darrivee, $typedevehicule, $capasitedevehicule, $etapesintermédiaires ,$matriculeVehicule) {
-$this->driver_id = $driver_id;
-$this->point_depart = $point_depart;
-$this->point_arrivee = $point_arrivee;
-$this->date_depart = $date_depart;
-$this->date_darrivee = $date_darrivee;
-$this->typedevehicule = $typedevehicule;
-$this->capasitedevehicule = $capasitedevehicule;
-$this->etapesintermédiaires = $etapesintermédiaires;
-$this->matriculeVehicule = $matriculeVehicule;
+public function __construct() {
+$this->driver_id;
+$this->point_depart;
+$this->point_arrivee;
+$this->date_depart;
+$this->date_darrivee ;
+$this->typedevehicule;
+$this->capasitedevehicule;
+$this->etapesintermédiaires;
+$this->matriculeVehicule;
 }
 
 public function getDriver_id() {
 return $this->driver_id;
 }
+
+public function setDriver_id($driver_id) { 
+$this->driver_id = $driver_id;
+}
+
 
 public function getPoint_depart() {
 return $this->point_depart;
@@ -102,22 +107,28 @@ $this->matriculeVehicule = $matriculeVehicule;
 }
 
 
-public function AddTrajet($driver_id, $point_depart, $point_arrivee, $date_depart, $date_darrivee, $typedevehicule, $capasitedevehicule, $etapesintermédiaires) {
-
-$database = new Database();
-$conn = $database->getConnection();
-$sql = "INSERT INTO trajet (driver_id, point_depart, point_arrivee, date_depart, date_darrivee, typedevehicule, capasitedevehicule, etapesintermédiaires , matricule_vehicule) VALUES (:driver_id, :point_depart, :point_arrivee, :date_depart, :date_darrivee, :typedevehicule, :capasitedevehicule, :etapesintermédiaires , :matriculeVehicule)";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':driver_id', $driver_id);
-$stmt->bindParam(':point_depart', $point_depart);
-$stmt->bindParam(':point_arrivee', $point_arrivee);
-$stmt->bindParam(':date_depart', $date_depart);
-$stmt->bindParam(':date_darrivee', $date_darrivee);
-$stmt->bindParam(':typedevehicule', $typedevehicule);
-$stmt->bindParam(':capasitedevehicule', $capasitedevehicule);
-$stmt->bindParam(':etapesintermédiaires', $etapesintermédiaires);
-$stmt->bindParam(':matriculeVehicule', $matriculeVehicule);
-$stmt->execute();
-}
-
+public function AddRide() {
+        $database = new Database();
+        $conn = $database->getConnection();
+        
+        $sql = "INSERT INTO trajet 
+                (driver_id, point_depart, point_arrivee, date_depart, date_darrivee, 
+                 typedevehicule, capasitedevehicule, etapesintermédiaires, matricule_vehicule)
+                VALUES 
+                (:driver_id, :point_depart, :point_arrivee, :date_depart, :date_darrivee, 
+                 :typedevehicule, :capasitedevehicule, :etapesintermédiaires, :matriculeVehicule)";
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            ':driver_id' => $this->driver_id,
+            ':point_depart' => $this->point_depart,
+            ':point_arrivee' => $this->point_arrivee,
+            ':date_depart' => $this->date_depart,
+            ':date_darrivee' => $this->date_darrivee,
+            ':typedevehicule' => $this->typedevehicule,
+            ':capasitedevehicule' => $this->capasitedevehicule,
+            ':etapesintermédiaires' => $this->etapesintermédiaires,
+            ':matriculeVehicule' => $this->matriculeVehicule
+        ]);
+    }
 }
