@@ -20,7 +20,7 @@
                 $message = $_POST[''];
                 $note = $_POST[''];
 
-                            
+
             }
         }
 

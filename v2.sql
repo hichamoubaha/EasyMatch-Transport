@@ -14,10 +14,23 @@ CREATE TABLE users (
     matricule VARCHAR(100) UNIQUE,
     pays VARCHAR(100),
     ville VARCHAR(100),
-    statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')),
+    statut VARCHAR CHECK (statut in ('accepted', 'blocked', 'pending')) DEFAULT 'pending',
     date_bloque DATE,
-    sex VARCHAR CHECK (post in ('M', 'F'))
+    sexe VARCHAR CHECK (sexe in ('M', 'F'))
+    -----
 );
+
+-- CREATE TABLE admin (
+--     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE  
+-- );
+
+-- CREATE TABLE expediteur (
+--     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
+-- );
+
+-- CREATE TABLE conducteur (
+--     user_id INT PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE
+-- );
 
 CREATE TABLE verify_badge (
     id SERIAL PRIMARY KEY,
@@ -56,8 +69,10 @@ CREATE TABLE trajet (
     matricule_vehicule VARCHAR(100),
     size_colis VARCHAR(50),
     package_car TEXT,
-    note TEXT
+    note TEXT,
+    description TEXT 
 );
+-------
 
 CREATE TABLE demande_expediteur (
     id SERIAL PRIMARY KEY,
@@ -77,3 +92,4 @@ CREATE TABLE fragile_colier_reservé (
 
 ALTER TABLE users
 ADD COLUMN sexe VARCHAR(1) CHECK (sexe IN ('M', 'F'));
+    

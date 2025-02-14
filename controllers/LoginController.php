@@ -1,10 +1,14 @@
 <?php
-use App\Models\User;
+require __DIR__."/../models/User.php";
 
 class LoginController extends Controller
 {
 
-    public function index()
+    public function index(){
+        require __DIR__.'/../views/Authentication/login.view.php';
+    }
+
+    public function login()
     {
         $data = [];
 
@@ -17,12 +21,22 @@ class LoginController extends Controller
 
                 $data['email'] = $_POST['email'];
 
-                $dbuser = $user->first($data);
+                $dbuser = $user->getUser($data);
                 if($dbuser){
                     if ($dbuser->password === $_POST['password']){
 
                         $_SESSION['USER'] = $dbuser;
-                        redirect('home');
+                        
+                        if($dbuser->role === 'expediteur'){
+                            redirect('sender');
+                        }
+                        else if($dbuser->role === 'conducteur'){
+                            redirect('driver');
+                        }
+
+                        else if($dbuser->role === 'admin'){
+                            redirect('dashboard');
+                        }
         
                     }
                 }
@@ -33,7 +47,7 @@ class LoginController extends Controller
 
         }
 
-        return $this->view('login',$data);
+        return $this->view('Authentication/login',$data);
         
     }
 
